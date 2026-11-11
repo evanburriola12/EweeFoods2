@@ -1,5 +1,6 @@
 package net.ewee.eweefoods;
 
+import net.ewee.eweefoods.block.ModBlocks;
 import net.ewee.eweefoods.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
@@ -35,6 +36,7 @@ public class EweeFoods {
         NeoForge.EVENT_BUS.register(this);
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -52,6 +54,9 @@ public class EweeFoods {
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
             event.accept(ModItems.SALT);
             event.accept(ModItems.CURED_MEAT);
+        }
+        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS){
+            event.accept(ModBlocks.SALT_BLOCK);
         }
     }
 

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "eweefoods:block/salt_block"
+    }
+  }
+}

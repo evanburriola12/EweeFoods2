@@ -1,4 +1,6 @@
 {
   "item.eweefoods.salt": "Salt",
-  "item.eweefoods.cured_meat": "Cured Meat"
+  "item.eweefoods.cured_meat": "Cured Meat",
+
+  "block.eweefoods.salt_block": "Salt Block"
 }
