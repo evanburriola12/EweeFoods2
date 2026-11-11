@@ -25,11 +25,11 @@ public class ModCreativeModeTabs {
                     })).build());
 
     public static final Supplier<CreativeModeTab> EWEEFOODS_BLOCKS_TAB =  CREATIVE_MOD_TAB.register("eweefoods_blocks_tab",
-            () -> CreativeModeTab.builder().icon(()-> new ItemStack(ModBlocks.SALT_BLOCK.get()))
+            () -> CreativeModeTab.builder().icon(()-> new ItemStack(ModBlocks.SALT_DEPOSIT.get()))
                     .withTabsBefore(ResourceLocation.fromNamespaceAndPath(EweeFoods.MOD_ID,"eweefoods_items_tab"))
                     .title(Component.translatable("creativetab.eweefoods.blocks"))
                     .displayItems(((itemDisplayParameters, output) -> {
-                        output.accept(ModBlocks.SALT_BLOCK);
+                        output.accept(ModBlocks.SALT_DEPOSIT);
                     })).build());
 
     public static void register(IEventBus eventBus){

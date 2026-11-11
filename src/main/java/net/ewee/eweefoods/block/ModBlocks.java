@@ -17,7 +17,7 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(EweeFoods.MOD_ID);
 
-    public static final DeferredBlock<Block> SALT_BLOCK = registerBlock("salt_block",
+    public static final DeferredBlock<Block> SALT_DEPOSIT = registerBlock("salt_deposit",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.CALCITE)));
 

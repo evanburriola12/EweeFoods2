@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "eweefoods:salt_deposit"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "eweefoods:salt"
+  }
+}
