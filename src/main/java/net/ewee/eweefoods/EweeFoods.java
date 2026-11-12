@@ -56,6 +56,7 @@ public class EweeFoods {
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
             event.accept(ModItems.SALT);
             event.accept(ModItems.CURED_MEAT);
+            event.accept(ModItems.BACON_AND_EGGS);
         }
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS){
             event.accept(ModBlocks.SALT_DEPOSIT);

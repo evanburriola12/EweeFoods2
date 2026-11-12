@@ -15,6 +15,9 @@ public class ModItems {
     public static final DeferredItem<Item> CURED_MEAT = ITEMS.register("cured_meat",
             () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> BACON_AND_EGGS = ITEMS.register("bacon_and_eggs",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.BACON_AND_EGGS)));
+
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

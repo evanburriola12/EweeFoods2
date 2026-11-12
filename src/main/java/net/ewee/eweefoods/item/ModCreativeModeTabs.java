@@ -22,6 +22,7 @@ public class ModCreativeModeTabs {
                     .displayItems(((itemDisplayParameters, output) -> {
                         output.accept(ModItems.SALT);
                         output.accept(ModItems.CURED_MEAT);
+                        output.accept(ModItems.BACON_AND_EGGS);
                     })).build());
 
     public static final Supplier<CreativeModeTab> EWEEFOODS_BLOCKS_TAB =  CREATIVE_MOD_TAB.register("eweefoods_blocks_tab",
