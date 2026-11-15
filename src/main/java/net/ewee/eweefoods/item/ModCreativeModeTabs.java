@@ -22,7 +22,17 @@ public class ModCreativeModeTabs {
                     .displayItems(((itemDisplayParameters, output) -> {
                         output.accept(ModItems.SALT);
                         output.accept(ModItems.CURED_MEAT);
+                        output.accept(ModItems.CURED_MEAT);
+                        output.accept(ModItems.CHICKEN_FRIED_STEAK);
+                        output.accept(ModItems.FRESH_LOAF);
+                        output.accept(ModItems.GLAZED_RABBIT);
+                        output.accept(ModItems.ROAST);
+                        output.accept(ModItems.NUTRITIOUS_SOUP);
+                        output.accept(ModItems.ROAST_BEEF);
+                        output.accept(ModItems.SPICY_CHICKEN_SANDWICH);
                         output.accept(ModItems.BACON_AND_EGGS);
+                        output.accept(ModItems.LAMB_BAT);
+                        output.accept(ModItems.SUSHI);
                     })).build());
 
     public static final Supplier<CreativeModeTab> EWEEFOODS_BLOCKS_TAB =  CREATIVE_MOD_TAB.register("eweefoods_blocks_tab",
