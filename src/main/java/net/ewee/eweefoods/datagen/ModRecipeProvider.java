@@ -37,6 +37,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('S', ModItems.SALT.get())
                 .unlockedBy("has_salt", has(ModItems.SALT)).save(recipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SEA_SALT_BlOCK.get())
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('S', ModItems.SEA_SALT.get())
+                .unlockedBy("has_sea_salt", has(ModItems.SEA_SALT)).save(recipeOutput);
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FLOUR.get(), 1)
                 .requires(Items.WHEAT,2)
                 .unlockedBy("has_wheat", has(Items.POINTED_DRIPSTONE)).save(recipeOutput, "eweefoods:flour_from_wheat");

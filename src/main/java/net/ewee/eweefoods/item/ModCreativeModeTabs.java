@@ -38,6 +38,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SUSHI);
                         output.accept(ModBlocks.SALT_DEPOSIT);
                         output.accept(ModBlocks.SEA_SALT_DEPOSIT);
+                        output.accept(ModBlocks.SEA_SALT_BlOCK);
 
                     })).build());
 

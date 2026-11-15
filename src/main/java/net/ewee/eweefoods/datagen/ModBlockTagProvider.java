@@ -22,11 +22,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SALT_DEPOSIT.get());
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
-                .add(ModBlocks.SEA_SALT_DEPOSIT.get());
+                .add(ModBlocks.SEA_SALT_DEPOSIT.get())
+                .add(ModBlocks.SEA_SALT_BlOCK.get());
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.SALT_DEPOSIT.get())
-                .add(ModBlocks.SEA_SALT_DEPOSIT.get());
+                .add(ModBlocks.SEA_SALT_DEPOSIT.get())
+                .add(ModBlocks.SEA_SALT_BlOCK.get());
     }
 
 
