@@ -16,6 +16,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.neoforged.fml.common.Mod;
 
 import java.util.Set;
 
@@ -32,6 +33,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         add(ModBlocks.SEA_SALT_DEPOSIT.get(),
                 block -> createMultipleOreDrops(ModBlocks.SEA_SALT_DEPOSIT.get(), ModItems.SEA_SALT.get(), 2, 6));
+
+        add(ModBlocks.SEA_SALT_BlOCK.get(),
+                block -> createMultipleOreDrops(ModBlocks.SEA_SALT_BlOCK.get(), ModItems.SEA_SALT.get(), 6, 9));
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block block, Item item, float minDrops, float maxDrops) {

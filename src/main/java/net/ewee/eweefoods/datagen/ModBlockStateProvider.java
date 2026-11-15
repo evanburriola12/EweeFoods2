@@ -16,6 +16,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.SALT_DEPOSIT);
         blockWithItem(ModBlocks.SEA_SALT_DEPOSIT);
+        blockWithItem(ModBlocks.SEA_SALT_BlOCK);
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock){
