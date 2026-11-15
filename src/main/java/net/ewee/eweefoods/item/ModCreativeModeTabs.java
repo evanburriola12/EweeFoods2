@@ -21,6 +21,8 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.eweefoods.items"))
                     .displayItems(((itemDisplayParameters, output) -> {
                         output.accept(ModItems.SALT);
+                        output.accept(ModItems.FLOUR);
+                        output.accept(ModItems.FLOUR_BAG);
                         output.accept(ModItems.CURED_MEAT);
                         output.accept(ModItems.CURED_MEAT);
                         output.accept(ModItems.CHICKEN_FRIED_STEAK);

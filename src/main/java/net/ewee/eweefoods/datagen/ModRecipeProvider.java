@@ -20,7 +20,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(@NotNull RecipeOutput recipeOutput) {
-        List<ItemLike> SALT_SMELTABLES = List.of(ModBlocks.SALT_DEPOSIT);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FLOUR_BAG)
+                .pattern("FFF")
+                .pattern("FFF")
+                .pattern("FFF")
+                .define('F', ModItems.FLOUR.get())
+                .unlockedBy("has_flour", has(ModItems.FLOUR)).save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SALT_DEPOSIT.get())
                 .pattern("SSS")
@@ -29,10 +35,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('S', ModItems.SALT.get())
                 .unlockedBy("has_salt", has(ModItems.SALT)).save(recipeOutput);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FLOUR.get(), 1)
+                .requires(Items.WHEAT,2)
+                .unlockedBy("has_wheat", has(Items.POINTED_DRIPSTONE)).save(recipeOutput, "eweefoods:flour_from_wheat");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FLOUR.get(), 9)
+                .requires(ModItems.FLOUR_BAG,1)
+                .unlockedBy("has_flour_bag", has(ModItems.FLOUR_BAG)).save(recipeOutput, "eweefoods:flour_from_flour_bag");
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SALT.get(), 1)
                 .requires(Items.POINTED_DRIPSTONE)
                 .unlockedBy("has_pointed_dripstone", has(Items.POINTED_DRIPSTONE)).save(recipeOutput, "eweefoods:salt_from_dripstone");
 
-        oreSmelting(recipeOutput, SALT_SMELTABLES, RecipeCategory.MISC, ModItems.SALT, 0.25f, 200, "salt");
+        oreSmelting(recipeOutput, List.of(ModBlocks.SALT_DEPOSIT), RecipeCategory.MISC, ModItems.SALT, 0.25f, 200, "salt");
+        oreSmelting(recipeOutput, List.of(ModItems.FLOUR), RecipeCategory.MISC, Items.BREAD, 0.25f, 200, "flour");
     }
 }

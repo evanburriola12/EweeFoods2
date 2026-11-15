@@ -12,6 +12,13 @@ public class ModItems {
     public static final DeferredItem<Item> SALT = ITEMS.register("salt",
             () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> FLOUR = ITEMS.register("flour",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> FLOUR_BAG = ITEMS.register("flour_bag",
+            () -> new Item(new Item.Properties()));
+
+
     public static final DeferredItem<Item> CURED_MEAT = ITEMS.register("cured_meat",
             () -> new Item(new Item.Properties().food(ModFoodProperties.CURED_MEAT)));
 

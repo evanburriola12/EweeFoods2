@@ -14,6 +14,8 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicItem(ModItems.SALT.get());
+        basicItem(ModItems.FLOUR.get());
+        basicItem(ModItems.FLOUR_BAG.get());
         basicItem(ModItems.CURED_MEAT.get());
         basicItem(ModItems.CHICKEN_FRIED_STEAK.get());
         basicItem(ModItems.FRESH_LOAF.get());
