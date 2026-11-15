@@ -53,14 +53,14 @@ public class EweeFoods {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
-            event.accept(ModItems.SALT);
-            event.accept(ModItems.CURED_MEAT);
-            event.accept(ModItems.BACON_AND_EGGS);
-        }
-        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS){
-            event.accept(ModBlocks.SALT_DEPOSIT);
-        }
+//        if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
+//            event.accept(ModItems.SALT);
+//            event.accept(ModItems.CURED_MEAT);
+//            event.accept(ModItems.BACON_AND_EGGS);
+//        }
+//        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS){
+//            event.accept(ModBlocks.SALT_DEPOSIT);
+//        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

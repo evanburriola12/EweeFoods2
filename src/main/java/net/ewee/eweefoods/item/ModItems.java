@@ -1,6 +1,7 @@
 package net.ewee.eweefoods.item;
 
 import net.ewee.eweefoods.EweeFoods;
+import net.ewee.eweefoods.item.custom.RevealItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -20,7 +21,7 @@ public class ModItems {
 
 
     public static final DeferredItem<Item> CURED_MEAT = ITEMS.register("cured_meat",
-            () -> new Item(new Item.Properties().food(ModFoodProperties.CURED_MEAT)));
+            () -> new RevealItem(new Item.Properties().food(ModFoodProperties.CURED_MEAT)));
 
     public static final DeferredItem<Item> CHICKEN_FRIED_STEAK = ITEMS.register("chicken_fried_steak",
             () -> new Item(new Item.Properties().food(ModFoodProperties.CHICKEN_FRIED_STEAK)));
