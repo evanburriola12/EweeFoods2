@@ -1,6 +1,8 @@
 package net.ewee.eweefoods.datagen;
 
 import net.ewee.eweefoods.EweeFoods;
+import net.ewee.eweefoods.item.ModItems;
+import net.ewee.eweefoods.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -17,6 +19,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        // TODO ModTags
+        tag(ModTags.Items.EWEE_FOOD_ITEMS)
+                .add(ModItems.BACON_AND_EGGS.get());
     }
 }
