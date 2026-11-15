@@ -3,6 +3,7 @@ package net.ewee.eweefoods.datagen;
 import net.ewee.eweefoods.EweeFoods;
 import net.ewee.eweefoods.item.ModItems;
 import net.minecraft.data.PackOutput;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -14,6 +15,8 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicItem(ModItems.SALT.get());
+        basicItem(ModItems.SEA_SALT.get());
+        basicItem(ModItems.BASIC_SALT.get());
         basicItem(ModItems.FLOUR.get());
         basicItem(ModItems.FLOUR_BAG.get());
         basicItem(ModItems.CURED_MEAT.get());
@@ -27,5 +30,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.BACON_AND_EGGS.get());
         basicItem(ModItems.LAMB_BAT.get());
         basicItem(ModItems.SUSHI.get());
+
     }
 }
