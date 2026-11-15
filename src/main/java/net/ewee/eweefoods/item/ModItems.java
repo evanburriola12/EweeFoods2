@@ -13,6 +13,12 @@ public class ModItems {
     public static final DeferredItem<Item> SALT = ITEMS.register("salt",
             () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> SEA_SALT = ITEMS.register("sea_salt",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> BASIC_SALT = ITEMS.register("basic_salt",
+            () -> new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> FLOUR = ITEMS.register("flour",
             () -> new Item(new Item.Properties()));
 

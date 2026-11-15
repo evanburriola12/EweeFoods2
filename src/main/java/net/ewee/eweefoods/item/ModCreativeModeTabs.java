@@ -20,6 +20,8 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.eweefoods"))
                     .displayItems(((itemDisplayParameters, output) -> {
                         output.accept(ModItems.SALT);
+                        output.accept(ModItems.SEA_SALT);
+                        output.accept(ModItems.BASIC_SALT);
                         output.accept(ModItems.FLOUR);
                         output.accept(ModItems.FLOUR_BAG);
                         output.accept(ModItems.CURED_MEAT);
@@ -35,6 +37,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.LAMB_BAT);
                         output.accept(ModItems.SUSHI);
                         output.accept(ModBlocks.SALT_DEPOSIT);
+                        output.accept(ModBlocks.SEA_SALT_DEPOSIT);
+
                     })).build());
 
     public static void register(IEventBus eventBus){
