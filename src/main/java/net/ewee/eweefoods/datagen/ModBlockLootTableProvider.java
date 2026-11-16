@@ -34,8 +34,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.SEA_SALT_DEPOSIT.get(),
                 block -> createMultipleOreDrops(ModBlocks.SEA_SALT_DEPOSIT.get(), ModItems.SEA_SALT.get(), 2, 6));
 
-        add(ModBlocks.SEA_SALT_BlOCK.get(),
-                block -> createMultipleOreDrops(ModBlocks.SEA_SALT_BlOCK.get(), ModItems.SEA_SALT.get(), 6, 9));
+        dropSelf(ModBlocks.SEA_SALT_BlOCK.get());
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block block, Item item, float minDrops, float maxDrops) {
