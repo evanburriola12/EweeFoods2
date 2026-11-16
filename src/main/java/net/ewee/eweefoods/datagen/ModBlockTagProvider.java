@@ -19,14 +19,14 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.SALT_DEPOSIT.get());
+                .add(ModBlocks.PINK_SALT_DEPOSIT.get());
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(ModBlocks.SEA_SALT_DEPOSIT.get())
                 .add(ModBlocks.SEA_SALT_BlOCK.get());
 
         tag(BlockTags.NEEDS_STONE_TOOL)
-                .add(ModBlocks.SALT_DEPOSIT.get())
+                .add(ModBlocks.PINK_SALT_DEPOSIT.get())
                 .add(ModBlocks.SEA_SALT_DEPOSIT.get())
                 .add(ModBlocks.SEA_SALT_BlOCK.get());
     }

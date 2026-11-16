@@ -10,13 +10,13 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(EweeFoods.MOD_ID);
 
-    public static final DeferredItem<Item> SALT = ITEMS.register("salt",
+    public static final DeferredItem<Item> PINK_SALT = ITEMS.register("pink_salt",
             () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> SEA_SALT = ITEMS.register("sea_salt",
             () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> BASIC_SALT = ITEMS.register("basic_salt",
+    public static final DeferredItem<Item> SALT = ITEMS.register("salt",
             () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> FLOUR = ITEMS.register("flour",
