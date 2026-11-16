@@ -28,8 +28,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        add(ModBlocks.SALT_DEPOSIT.get(),
-               block ->  createMultipleOreDrops(ModBlocks.SALT_DEPOSIT.get(), ModItems.SALT.get(), 2, 6));
+        add(ModBlocks.PINK_SALT_DEPOSIT.get(),
+               block ->  createMultipleOreDrops(ModBlocks.PINK_SALT_DEPOSIT.get(), ModItems.PINK_SALT.get(), 2, 6));
 
         add(ModBlocks.SEA_SALT_DEPOSIT.get(),
                 block -> createMultipleOreDrops(ModBlocks.SEA_SALT_DEPOSIT.get(), ModItems.SEA_SALT.get(), 2, 6));

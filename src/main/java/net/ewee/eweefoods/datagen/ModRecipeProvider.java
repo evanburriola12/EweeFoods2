@@ -30,11 +30,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('F', ModItems.FLOUR.get())
                 .unlockedBy("has_flour", has(ModItems.FLOUR)).save(recipeOutput);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SALT_DEPOSIT.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.PINK_SALT_DEPOSIT.get())
                 .pattern("SSS")
                 .pattern("SSS")
                 .pattern("SSS")
-                .define('S', ModItems.SALT.get())
+                .define('S', ModItems.PINK_SALT.get())
                 .unlockedBy("has_salt", has(ModItems.SALT)).save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SEA_SALT_BlOCK.get())
@@ -46,7 +46,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FLOUR.get(), 1)
                 .requires(Items.WHEAT,2)
-                .unlockedBy("has_wheat", has(Items.POINTED_DRIPSTONE)).save(recipeOutput, "eweefoods:flour_from_wheat");
+                .unlockedBy("has_wheat", has(Items.WHEAT)).save(recipeOutput, "eweefoods:flour_from_wheat");
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FLOUR.get(), 9)
                 .requires(ModItems.FLOUR_BAG,1)
@@ -56,7 +56,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Items.POINTED_DRIPSTONE)
                 .unlockedBy("has_pointed_dripstone", has(Items.POINTED_DRIPSTONE)).save(recipeOutput, "eweefoods:salt_from_dripstone");
 
-        oreSmelting(recipeOutput, List.of(ModBlocks.SALT_DEPOSIT), RecipeCategory.MISC, ModItems.SALT, 0.25f, 200, "salt");
+        oreSmelting(recipeOutput, List.of(ModBlocks.PINK_SALT_DEPOSIT), RecipeCategory.MISC, ModItems.PINK_SALT, 0.25f, 200, "salt");
         oreSmelting(recipeOutput, List.of(ModItems.FLOUR), RecipeCategory.MISC, Items.BREAD, 0.25f, 200, "flour");
     }
 

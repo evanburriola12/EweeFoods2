@@ -14,7 +14,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        blockWithItem(ModBlocks.SALT_DEPOSIT);
+        blockWithItem(ModBlocks.PINK_SALT_DEPOSIT);
         blockWithItem(ModBlocks.SEA_SALT_DEPOSIT);
         blockWithItem(ModBlocks.SEA_SALT_BlOCK);
     }

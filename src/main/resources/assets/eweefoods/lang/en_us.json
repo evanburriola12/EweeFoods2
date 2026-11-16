@@ -1,7 +1,7 @@
 {
   "item.eweefoods.salt": "Salt",
   "item.eweefoods.sea_salt": "Sea Salt",
-  "item.eweefoods.basic_salt": "Basic Salt",
+  "item.eweefoods.pink_salt": "Pink Salt",
   "item.eweefoods.flour": "Flour",
   "item.eweefoods.flour_bag": "Bag of Flour",
   "item.eweefoods.cured_meat": "Cured Meat",
@@ -16,7 +16,7 @@
   "item.eweefoods.lamb_bat": "Lamb Bat",
   "item.eweefoods.sushi": "Sushi",
 
-  "block.eweefoods.salt_deposit": "Salt Deposit",
+  "block.eweefoods.pink_salt_deposit": "Pink Salt Deposit",
   "block.eweefoods.sea_salt_deposit": "Sea Salt Deposit",
   "block.eweefoods.sea_salt_block": "Block of Sea Salt",
 
