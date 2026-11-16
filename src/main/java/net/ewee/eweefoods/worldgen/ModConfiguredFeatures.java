@@ -1,19 +1,32 @@
 package net.ewee.eweefoods.worldgen;
 
 import net.ewee.eweefoods.EweeFoods;
+import net.ewee.eweefoods.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
+
+import java.util.List;
 
 public class ModConfiguredFeatures {
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_PINK_SALT_DEPOSIT_KEY = registerKey("salt_deposit");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+        RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
 
+        List<OreConfiguration.TargetBlockState> overworldPinkSaltDeposits = List.of(
+                OreConfiguration.target(stoneReplaceables, ModBlocks.PINK_SALT_DEPOSIT.get().defaultBlockState())
+        );
 
+        register(context, OVERWORLD_PINK_SALT_DEPOSIT_KEY, Feature.ORE, new OreConfiguration(overworldPinkSaltDeposits, 6));
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
