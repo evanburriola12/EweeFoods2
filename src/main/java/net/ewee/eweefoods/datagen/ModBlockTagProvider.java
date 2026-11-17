@@ -5,6 +5,7 @@ import net.ewee.eweefoods.block.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -19,16 +20,19 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.PINK_SALT_DEPOSIT.get());
+                .add(ModBlocks.PINK_SALT_DEPOSIT.get())
+                .add(ModBlocks.PINK_SALT_BLOCK.get())
+                .add(ModBlocks.SALT_BlOCK.get())
+                .add(ModBlocks.SEA_SALT_BlOCK.get());
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
-                .add(ModBlocks.SEA_SALT_DEPOSIT.get())
-                .add(ModBlocks.SEA_SALT_BlOCK.get());
+                .add(ModBlocks.SEA_SALT_DEPOSIT.get());
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.PINK_SALT_DEPOSIT.get())
-                .add(ModBlocks.SEA_SALT_DEPOSIT.get())
-                .add(ModBlocks.SEA_SALT_BlOCK.get());
+                .add(ModBlocks.PINK_SALT_BLOCK.get())
+                .add(ModBlocks.SEA_SALT_BlOCK.get())
+                .add(ModBlocks.SALT_BlOCK.get());
     }
 
 

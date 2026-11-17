@@ -30,12 +30,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('F', ModItems.FLOUR.get())
                 .unlockedBy("has_flour", has(ModItems.FLOUR)).save(recipeOutput);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.PINK_SALT_DEPOSIT.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.PINK_SALT_BLOCK.get())
                 .pattern("SSS")
                 .pattern("SSS")
                 .pattern("SSS")
                 .define('S', ModItems.PINK_SALT.get())
-                .unlockedBy("has_salt", has(ModItems.SALT)).save(recipeOutput);
+                .unlockedBy("has_sea_salt", has(ModItems.PINK_SALT)).save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SEA_SALT_BlOCK.get())
                 .pattern("SSS")
@@ -44,9 +44,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('S', ModItems.SEA_SALT.get())
                 .unlockedBy("has_sea_salt", has(ModItems.SEA_SALT)).save(recipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SALT_BlOCK.get())
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('S', ModItems.SALT.get())
+                .unlockedBy("has_sea_salt", has(ModItems.SALT)).save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.PINK_SALT.get(), 9)
+                .requires(ModBlocks.PINK_SALT_BLOCK,1)
+                .unlockedBy("has_flour_bag", has(ModBlocks.PINK_SALT_BLOCK)).save(recipeOutput, "eweefoods:pink_salt_from_block");
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SEA_SALT.get(), 9)
                 .requires(ModBlocks.SEA_SALT_BlOCK,1)
                 .unlockedBy("has_flour_bag", has(ModBlocks.SEA_SALT_BlOCK)).save(recipeOutput, "eweefoods:sea_salt_from_block");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SALT.get(), 9)
+                .requires(ModBlocks.SALT_BlOCK,1)
+                .unlockedBy("has_flour_bag", has(ModBlocks.SALT_BlOCK)).save(recipeOutput, "eweefoods:salt_from_block");
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FLOUR.get(), 1)
                 .requires(Items.WHEAT,2)

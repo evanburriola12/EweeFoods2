@@ -17,8 +17,10 @@
   "item.eweefoods.sushi": "Sushi",
 
   "block.eweefoods.pink_salt_deposit": "Pink Salt Deposit",
+  "block.eweefoods.pink_salt_block": "Block of Pink Salt",
   "block.eweefoods.sea_salt_deposit": "Sea Salt Deposit",
   "block.eweefoods.sea_salt_block": "Block of Sea Salt",
+  "block.eweefoods.salt_block": "Block of Salt",
 
   "creativetab.eweefoods": "EweeFoods"
 }
