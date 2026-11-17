@@ -6,22 +6,28 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
+import net.minecraft.world.level.levelgen.placement.HeightmapPlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 
 import java.util.List;
 
 public class ModPlacedFeatures {
-    public static final ResourceKey<PlacedFeature> PINK_SALT_DEPOSIT_PLACED_KEY = registerKey("salt_deposit_placed");
+    public static final ResourceKey<PlacedFeature> PINK_SALT_DEPOSIT_PLACED_KEY = registerKey("pink_salt_deposit_placed");
+    public static final ResourceKey<PlacedFeature> SEA_SALT_DEPOSIT_PLACED_KEY = registerKey("sea_salt_deposit_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         register(context, PINK_SALT_DEPOSIT_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_PINK_SALT_DEPOSIT_KEY),
                 ModOrePlacement.commonOrePlacement(60, HeightRangePlacement.uniform(VerticalAnchor.absolute(95), VerticalAnchor.top())));
+
+        register(context, SEA_SALT_DEPOSIT_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_SEA_SALT_DEPOSIT_KEY),
+                ModOrePlacement.commonOrePlacement(16, HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(112))));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {
