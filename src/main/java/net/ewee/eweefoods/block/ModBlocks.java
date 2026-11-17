@@ -31,11 +31,11 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> SEA_SALT_BlOCK = registerBlock("sea_salt_block",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.SAND)));
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.CALCITE)));
 
     public static final DeferredBlock<Block> SALT_BlOCK = registerBlock("salt_block",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.SAND)));
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.CALCITE)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block){
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
