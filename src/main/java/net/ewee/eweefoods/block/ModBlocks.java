@@ -2,6 +2,7 @@ package net.ewee.eweefoods.block;
 
 import com.mojang.serialization.MapCodec;
 import net.ewee.eweefoods.EweeFoods;
+import net.ewee.eweefoods.block.custom.SaltLampBlock;
 import net.ewee.eweefoods.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -44,6 +45,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SALT_BlOCK = registerBlock("salt_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.CALCITE)));
+
+    public static final DeferredBlock<Block> SALT_LAMP = registerBlock("salt_lamp",
+            () -> new SaltLampBlock(BlockBehaviour.Properties.of().strength(0.2f).lightLevel(state -> state.getValue(SaltLampBlock.CLICKED) ? 15 : 0)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block){
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

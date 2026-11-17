@@ -39,6 +39,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SEA_SALT_BlOCK.get());
 
         dropSelf(ModBlocks.SALT_BlOCK.get());
+
+        dropSelf(ModBlocks.SALT_LAMP.get());
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block block, Item item, float minDrops, float maxDrops) {

@@ -41,6 +41,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.SEA_SALT_DEPOSIT);
                         output.accept(ModBlocks.SEA_SALT_BlOCK);
                         output.accept(ModBlocks.SALT_BlOCK);
+                        output.accept(ModBlocks.SALT_LAMP);
 
                     })).build());
 
