@@ -37,8 +37,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.LAMB_BAT);
                         output.accept(ModItems.SUSHI);
                         output.accept(ModBlocks.PINK_SALT_DEPOSIT);
+                        output.accept(ModBlocks.PINK_SALT_BLOCK);
                         output.accept(ModBlocks.SEA_SALT_DEPOSIT);
                         output.accept(ModBlocks.SEA_SALT_BlOCK);
+                        output.accept(ModBlocks.SALT_BlOCK);
 
                     })).build());
 

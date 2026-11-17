@@ -21,11 +21,19 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.CALCITE)));
 
+    public static final DeferredBlock<Block> PINK_SALT_BLOCK = registerBlock("pink_salt_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.CALCITE)));
+
     public static final DeferredBlock<Block> SEA_SALT_DEPOSIT = registerBlock("sea_salt_deposit",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.SAND)));
 
     public static final DeferredBlock<Block> SEA_SALT_BlOCK = registerBlock("sea_salt_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.SAND)));
+
+    public static final DeferredBlock<Block> SALT_BlOCK = registerBlock("salt_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.SAND)));
 
