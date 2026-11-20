@@ -1,8 +1,10 @@
 package net.ewee.eweefoods.item;
 
 import net.ewee.eweefoods.EweeFoods;
+import net.ewee.eweefoods.block.ModBlocks;
 import net.ewee.eweefoods.item.custom.RevealItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -24,7 +26,6 @@ public class ModItems {
 
     public static final DeferredItem<Item> FLOUR_BAG = ITEMS.register("flour_bag",
             () -> new Item(new Item.Properties()));
-
 
     public static final DeferredItem<Item> CURED_MEAT = ITEMS.register("cured_meat",
             () -> new RevealItem(new Item.Properties().food(ModFoodProperties.CURED_MEAT)));
@@ -58,6 +59,12 @@ public class ModItems {
 
     public static final DeferredItem<Item> SUSHI = ITEMS.register("sushi",
             () -> new Item(new Item.Properties().food(ModFoodProperties.SUSHI)));
+
+    public static final DeferredItem<Item> RICE = ITEMS.register("rice",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> RICE_SEEDS = ITEMS.register("rice_seeds",
+            () -> new ItemNameBlockItem(ModBlocks.RICE_CROP.get(), new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

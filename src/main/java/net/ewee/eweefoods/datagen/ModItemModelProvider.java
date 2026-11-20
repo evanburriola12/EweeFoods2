@@ -30,6 +30,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.BACON_AND_EGGS.get());
         basicItem(ModItems.LAMB_BAT.get());
         basicItem(ModItems.SUSHI.get());
-
+        basicItem(ModItems.RICE_SEEDS.get());
+        basicItem(ModItems.RICE.get());
     }
 }

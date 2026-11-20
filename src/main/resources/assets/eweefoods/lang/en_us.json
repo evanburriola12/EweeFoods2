@@ -16,10 +16,16 @@
   "item.eweefoods.lamb_bat": "Lamb Bat",
   "item.eweefoods.sushi": "Sushi",
 
+  "item.eweefoods.rice_seeds": "Rice Seeds",
+  "item.eweefoods.rice": "Rice",
+  "block.eweefoods.rice_crop": "Rice Crop",
+
   "block.eweefoods.pink_salt_deposit": "Pink Salt Deposit",
   "block.eweefoods.pink_salt_block": "Block of Pink Salt",
+
   "block.eweefoods.sea_salt_deposit": "Sea Salt Deposit",
   "block.eweefoods.sea_salt_block": "Block of Sea Salt",
+
   "block.eweefoods.salt_block": "Block of Salt",
 
   "block.eweefoods.salt_lamp": "Salt Lamp",
