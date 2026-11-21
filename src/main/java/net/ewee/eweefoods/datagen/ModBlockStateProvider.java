@@ -31,6 +31,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.SALT_BlOCK);
 
         customLamp();
+        dryingRack();
 
         makeCrop(((CropBlock) ModBlocks.RICE_CROP.get()), "rice_crop_stage", "rice_crop_stage");
 
@@ -72,5 +73,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(ModBlocks.SALT_LAMP.get(), models().singleTexture("salt_lamp",
                 ResourceLocation.fromNamespaceAndPath(EweeFoods.MOD_ID, "block/salt_lamp_on"),
                 ResourceLocation.fromNamespaceAndPath(EweeFoods.MOD_ID, "block/salt_lamp_on")));
+    }
+
+    private void dryingRack(){
+        getVariantBuilder(ModBlocks.DRYING_RACK.get()).forAllStates(blockState ->{
+            return new ConfiguredModel[]{new ConfiguredModel(models().singleTexture("drying_rack_gen",
+                    ResourceLocation.fromNamespaceAndPath(EweeFoods.MOD_ID, "block/drying_rack"),
+                    ResourceLocation.fromNamespaceAndPath(EweeFoods.MOD_ID, "block/drying_rack")))};
+        });
+
+        simpleBlockItem(ModBlocks.DRYING_RACK.get(), models().singleTexture("drying_rack_gen",
+                ResourceLocation.fromNamespaceAndPath(EweeFoods.MOD_ID, "block/drying_rack"),
+                ResourceLocation.fromNamespaceAndPath(EweeFoods.MOD_ID, "block/drying_rack")));
     }
 }

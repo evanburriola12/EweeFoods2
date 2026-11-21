@@ -1,6 +1,7 @@
 package net.ewee.eweefoods;
 
 import net.ewee.eweefoods.block.ModBlocks;
+import net.ewee.eweefoods.block.entity.ModBlockEntities;
 import net.ewee.eweefoods.item.ModCreativeModeTabs;
 import net.ewee.eweefoods.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -39,6 +40,8 @@ public class EweeFoods {
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+        ModBlockEntities.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
