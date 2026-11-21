@@ -20,6 +20,31 @@
   "item.eweefoods.rice": "Rice",
   "block.eweefoods.rice_crop": "Rice Crop",
 
+  "item.eweefoods.salted_beef": "Salted Beef",
+  "item.eweefoods.dried_beef": "Dried Beef",
+  "item.eweefoods.dried_salted_beef": "Dried Salted Beef",
+  "item.eweefoods.cooked_salted_beef": "Seasoned Steak",
+
+  "item.eweefoods.salted_pork": "Salted Pork",
+  "item.eweefoods.dried_pork": "Dried Pork",
+  "item.eweefoods.dried_salted_pork": "Dried Salted Pork",
+  "item.eweefoods.cooked_salted_pork": "Seasoned Pork",
+
+  "item.eweefoods.salted_chicken": "Salted Chicken",
+  "item.eweefoods.dried_chicken": "Dried Chicken",
+  "item.eweefoods.dried_salted_chicken": "Dried Salted Chicken",
+  "item.eweefoods.cooked_salted_chicken": "Seasoned Chicken",
+
+  "item.eweefoods.salted_mutton": "Salted Mutton",
+  "item.eweefoods.dried_mutton": "Dried Mutton",
+  "item.eweefoods.dried_salted_mutton": "Dried Salted Mutton",
+  "item.eweefoods.cooked_salted_mutton": "Seasoned Mutton",
+
+  "item.eweefoods.salted_rabbit": "Salted Rabbit",
+  "item.eweefoods.dried_rabbit": "Dried Rabbit",
+  "item.eweefoods.dried_salted_rabbit": "Dried Salted Rabbit",
+  "item.eweefoods.cooked_salted_rabbit": "Seasoned Rabbit",
+
   "block.eweefoods.pink_salt_deposit": "Pink Salt Deposit",
   "block.eweefoods.pink_salt_block": "Block of Pink Salt",
 

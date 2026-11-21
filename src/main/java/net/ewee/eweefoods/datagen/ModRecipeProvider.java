@@ -6,11 +6,13 @@ import net.ewee.eweefoods.item.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import org.jetbrains.annotations.NotNull;
+import net.minecraft.world.item.Item;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -22,6 +24,26 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(@NotNull RecipeOutput recipeOutput) {
+
+
+        //Campfire Cooking
+        campfireRecipe(recipeOutput, ModItems.SALTED_BEEF.get(),
+                ModItems.COOKED_SALTED_BEEF.get(), "cooked_salted_beef");
+
+        campfireRecipe(recipeOutput, ModItems.SALTED_PORK.get(),
+                ModItems.COOKED_SALTED_PORK.get(), "cooked_salted_pork");
+
+        campfireRecipe(recipeOutput, ModItems.SALTED_RABBIT.get(),
+                ModItems.COOKED_SALTED_RABBIT.get(), "cooked_salted_rabbit");
+
+        campfireRecipe(recipeOutput, ModItems.SALTED_MUTTON.get(),
+                ModItems.COOKED_SALTED_MUTTON.get(), "cooked_salted_mutton");
+
+        campfireRecipe(recipeOutput, ModItems.SALTED_CHICKEN.get(),
+                ModItems.COOKED_SALTED_CHICKEN.get(), "cooked_salted_chicken");
+
+
+
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FLOUR_BAG)
                 .pattern("FFF")
@@ -58,17 +80,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('L', Items.LANTERN)
                 .unlockedBy("has_salt_block", has(ModBlocks.PINK_SALT_BLOCK)).save(recipeOutput);
 
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.PINK_SALT.get(), 9)
                 .requires(ModBlocks.PINK_SALT_BLOCK,1)
-                .unlockedBy("has_flour_bag", has(ModBlocks.PINK_SALT_BLOCK)).save(recipeOutput, "eweefoods:pink_salt_from_block");
+                .unlockedBy("has_pink_salt_block", has(ModBlocks.PINK_SALT_BLOCK)).save(recipeOutput, "eweefoods:pink_salt_from_block");
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SEA_SALT.get(), 9)
                 .requires(ModBlocks.SEA_SALT_BlOCK,1)
-                .unlockedBy("has_flour_bag", has(ModBlocks.SEA_SALT_BlOCK)).save(recipeOutput, "eweefoods:sea_salt_from_block");
+                .unlockedBy("has_sea_salt_block", has(ModBlocks.SEA_SALT_BlOCK)).save(recipeOutput, "eweefoods:sea_salt_from_block");
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SALT.get(), 9)
                 .requires(ModBlocks.SALT_BlOCK,1)
-                .unlockedBy("has_flour_bag", has(ModBlocks.SALT_BlOCK)).save(recipeOutput, "eweefoods:salt_from_block");
+                .unlockedBy("has_salt_block", has(ModBlocks.SALT_BlOCK)).save(recipeOutput, "eweefoods:salt_from_block");
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FLOUR.get(), 1)
                 .requires(Items.WHEAT,2)
@@ -81,6 +104,36 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SALT.get(), 1)
                 .requires(Items.POINTED_DRIPSTONE)
                 .unlockedBy("has_pointed_dripstone", has(Items.POINTED_DRIPSTONE)).save(recipeOutput, "eweefoods:salt_from_dripstone");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.SALTED_BEEF.get())
+                .requires(Items.BEEF)
+                .requires(ModItems.SALT.get())
+                .unlockedBy("has_beef", has(Items.BEEF))
+                .save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.SALTED_PORK.get())
+                .requires(Items.PORKCHOP)
+                .requires(ModItems.SALT.get())
+                .unlockedBy("has_porkchop", has(Items.PORKCHOP))
+                .save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.SALTED_CHICKEN.get())
+                .requires(Items.CHICKEN)
+                .requires(ModItems.SALT.get())
+                .unlockedBy("has_chicken", has(Items.CHICKEN))
+                .save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.SALTED_MUTTON.get())
+                .requires(Items.MUTTON)
+                .requires(ModItems.SALT.get())
+                .unlockedBy("has_mutton", has(Items.MUTTON))
+                .save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.SALTED_RABBIT.get())
+                .requires(Items.RABBIT)
+                .requires(ModItems.SALT.get())
+                .unlockedBy("has_rabbit", has(Items.RABBIT))
+                .save(recipeOutput);
 
         oreSmelting(recipeOutput, List.of(ModBlocks.PINK_SALT_DEPOSIT), RecipeCategory.MISC, ModItems.PINK_SALT, 0.25f, 200, "salt");
         oreSmelting(recipeOutput, List.of(ModItems.FLOUR), RecipeCategory.MISC, Items.BREAD, 0.25f, 200, "flour");
@@ -105,4 +158,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .save(recipeOutput, EweeFoods.MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
     }
+
+    protected void campfireRecipe(RecipeOutput output, Item input,
+                                  Item result, String recipeName) {
+
+        SimpleCookingRecipeBuilder.campfireCooking(
+                        Ingredient.of(input),
+                        RecipeCategory.FOOD,
+                        result,
+                        0.35f,
+                        600
+                )
+                .unlockedBy("has_" + recipeName, has(input))
+                .save(output, ResourceLocation.fromNamespaceAndPath(
+                        EweeFoods.MOD_ID, recipeName + "_campfire"
+                ));
+    }
 }
+
+

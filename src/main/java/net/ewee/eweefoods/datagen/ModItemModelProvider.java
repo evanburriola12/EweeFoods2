@@ -30,7 +30,34 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.BACON_AND_EGGS.get());
         basicItem(ModItems.LAMB_BAT.get());
         basicItem(ModItems.SUSHI.get());
+
+
         basicItem(ModItems.RICE_SEEDS.get());
         basicItem(ModItems.RICE.get());
+
+        basicItem(ModItems.SALTED_BEEF.get());
+        basicItem(ModItems.DRIED_BEEF.get());
+        basicItem(ModItems.DRIED_SALTED_BEEF.get());
+        basicItem(ModItems.COOKED_SALTED_BEEF.get());
+
+        //basicItem(ModItems.SALTED_PORK.get());
+        //basicItem(ModItems.DRIED_PORK.get());
+        //basicItem(ModItems.DRIED_SALTED_PORK.get());
+        //basicItem(ModItems.COOKED_SALTED_PORK.get());
+
+        basicItem(ModItems.SALTED_CHICKEN.get());
+        //basicItem(ModItems.DRIED_CHICKEN.get());
+        //basicItem(ModItems.DRIED_SALTED_CHICKEN.get());
+        basicItem(ModItems.COOKED_SALTED_CHICKEN.get());
+
+        //basicItem(ModItems.SALTED_MUTTON.get());
+        //basicItem(ModItems.DRIED_MUTTON.get());
+        //basicItem(ModItems.DRIED_SALTED_MUTTON.get());
+        //basicItem(ModItems.COOKED_SALTED_MUTTON.get());
+
+        //basicItem(ModItems.SALTED_RABBIT.get());
+        //basicItem(ModItems.DRIED_RABBIT.get());
+        //basicItem(ModItems.DRIED_SALTED_RABBIT.get());
+        //basicItem(ModItems.COOKED_SALTED_RABBIT.get());
     }
 }

@@ -81,4 +81,79 @@ public class ModFoodProperties {
             .effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 6000, 0), 1.0F)
             .fast()
             .build();
+
+    public static final FoodProperties DRIED_BEEF = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
+
+    public static final FoodProperties DRIED_SALTED_BEEF = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
+
+    public static final FoodProperties COOKED_SALTED_BEEF = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
+
+    public static final FoodProperties DRIED_PORK = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
+
+    public static final FoodProperties DRIED_SALTED_PORK = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
+
+    public static final FoodProperties COOKED_SALTED_PORK = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
+
+    public static final FoodProperties DRIED_CHICKEN = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
+
+    public static final FoodProperties DRIED_SALTED_CHICKEN = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
+
+    public static final FoodProperties COOKED_SALTED_CHICKEN = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
+
+    public static final FoodProperties DRIED_MUTTON = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
+
+    public static final FoodProperties DRIED_SALTED_MUTTON = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
+
+    public static final FoodProperties COOKED_SALTED_MUTTON = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
+
+    public static final FoodProperties DRIED_RABBIT = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
+
+    public static final FoodProperties DRIED_SALTED_RABBIT = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
+
+    public static final FoodProperties COOKED_SALTED_RABBIT = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
 }

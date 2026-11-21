@@ -36,14 +36,48 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BACON_AND_EGGS);
                         output.accept(ModItems.LAMB_BAT);
                         output.accept(ModItems.SUSHI);
+
+
                         output.accept(ModBlocks.PINK_SALT_DEPOSIT);
                         output.accept(ModBlocks.PINK_SALT_BLOCK);
                         output.accept(ModBlocks.SEA_SALT_DEPOSIT);
                         output.accept(ModBlocks.SEA_SALT_BlOCK);
+
+
                         output.accept(ModBlocks.SALT_BlOCK);
                         output.accept(ModBlocks.SALT_LAMP);
                         output.accept(ModItems.RICE_SEEDS);
                         output.accept(ModItems.RICE);
+
+
+
+                        output.accept(ModItems.RICE_SEEDS);
+                        output.accept(ModItems.RICE);
+
+                        output.accept(ModItems.DRIED_BEEF);
+                        output.accept(ModItems.SALTED_BEEF);
+                        output.accept(ModItems.DRIED_SALTED_BEEF);
+                        output.accept(ModItems.COOKED_SALTED_BEEF);
+
+                        output.accept(ModItems.DRIED_PORK);
+                        output.accept(ModItems.SALTED_PORK);
+                        output.accept(ModItems.DRIED_SALTED_PORK);
+                        output.accept(ModItems.COOKED_SALTED_PORK);
+
+                        output.accept(ModItems.DRIED_CHICKEN);
+                        output.accept(ModItems.SALTED_CHICKEN);
+                        output.accept(ModItems.DRIED_SALTED_CHICKEN);
+                        output.accept(ModItems.COOKED_SALTED_CHICKEN);
+
+                        output.accept(ModItems.DRIED_MUTTON);
+                        output.accept(ModItems.SALTED_MUTTON);
+                        output.accept(ModItems.DRIED_SALTED_MUTTON);
+                        output.accept(ModItems.COOKED_SALTED_MUTTON);
+
+                        output.accept(ModItems.DRIED_RABBIT);
+                        output.accept(ModItems.SALTED_RABBIT);
+                        output.accept(ModItems.DRIED_SALTED_RABBIT);
+                        output.accept(ModItems.COOKED_SALTED_RABBIT);
 
 
                     })).build());

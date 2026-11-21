@@ -3,6 +3,7 @@ package net.ewee.eweefoods.item;
 import net.ewee.eweefoods.EweeFoods;
 import net.ewee.eweefoods.block.ModBlocks;
 import net.ewee.eweefoods.item.custom.RevealItem;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.neoforged.bus.api.IEventBus;
@@ -65,6 +66,167 @@ public class ModItems {
 
     public static final DeferredItem<Item> RICE_SEEDS = ITEMS.register("rice_seeds",
             () -> new ItemNameBlockItem(ModBlocks.RICE_CROP.get(), new Item.Properties()));
+
+
+    //Beef Variants
+    public static final DeferredItem<Item> SALTED_BEEF = ITEMS.register("salted_beef",
+            () -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> SEA_SALTED_BEEF = ITEMS.register("sea_salted_beef",
+            //() -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> PINK_SALTED_BEEF = ITEMS.register("pink_salted_beef",
+            //() -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> DRIED_BEEF = ITEMS.register("dried_beef",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.DRIED_BEEF)));
+
+    public static final DeferredItem<Item> DRIED_SALTED_BEEF = ITEMS.register("dried_salted_beef",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.DRIED_SALTED_BEEF)));
+
+    //public static final DeferredItem<Item> DRIED_SEA_SALTED_BEEF = ITEMS.register("dried_sea_salted_beef",
+            //() -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> DRIED_PINK_SALTED_BEEF = ITEMS.register("dried_pink_salted_beef",
+            //() -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> COOKED_SALTED_BEEF = ITEMS.register("cooked_salted_beef",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.COOKED_SALTED_BEEF)));
+
+    //public static final DeferredItem<Item> COOKED_SEA_SALTED_BEEF = ITEMS.register("cooked_sea_salted_beef",
+            //() -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> COOKED_PINK_SALTED_BEEF = ITEMS.register("cooked_pink_salted_beef",
+            //() -> new Item(new Item.Properties()));
+
+    //Pork Variants
+    public static final DeferredItem<Item> SALTED_PORK = ITEMS.register("salted_pork",
+            () -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> SEA_SALTED_PORK = ITEMS.register("sea_salted_pork",
+    //() -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> PINK_SALTED_PORK = ITEMS.register("pink_salted_pork",
+    //() -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> DRIED_PORK = ITEMS.register("dried_pork",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.DRIED_PORK)));
+
+    public static final DeferredItem<Item> DRIED_SALTED_PORK = ITEMS.register("dried_salted_pork",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.DRIED_SALTED_PORK)));
+
+    //public static final DeferredItem<Item> DRIED_SEA_SALTED_PORK = ITEMS.register("dried_sea_salted_pork",
+    //() -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> DRIED_PINK_SALTED_PORK = ITEMS.register("dried_pink_salted_pork",
+    //() -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> COOKED_SALTED_PORK = ITEMS.register("cooked_salted_pork",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.COOKED_SALTED_PORK)));
+
+    //public static final DeferredItem<Item> COOKED_SEA_SALTED_PORK = ITEMS.register("cooked_sea_salted_pork",
+    //() -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> COOKED_PINK_SALTED_PORK = ITEMS.register("cooked_pink_salted_pork",
+    //() -> new Item(new Item.Properties()));
+
+
+    //Chicken Variants
+    public static final DeferredItem<Item> SALTED_CHICKEN = ITEMS.register("salted_chicken",
+            () -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> SEA_SALTED_CHICKEN = ITEMS.register("sea_salted_chicken",
+    //() -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> PINK_SALTED_CHICKEN = ITEMS.register("pink_salted_chicken",
+    //() -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> DRIED_CHICKEN = ITEMS.register("dried_chicken",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.DRIED_CHICKEN)));
+
+    public static final DeferredItem<Item> DRIED_SALTED_CHICKEN = ITEMS.register("dried_salted_chicken",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.DRIED_SALTED_CHICKEN)));
+
+    //public static final DeferredItem<Item> DRIED_SEA_SALTED_CHICKEN = ITEMS.register("dried_sea_salted_chicken",
+    //() -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> DRIED_PINK_SALTED_CHICKEN = ITEMS.register("dried_pink_salted_chicken",
+    //() -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> COOKED_SALTED_CHICKEN = ITEMS.register("cooked_salted_chicken",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.COOKED_SALTED_CHICKEN)));
+
+    //public static final DeferredItem<Item> COOKED_SEA_SALTED_CHICKEN = ITEMS.register("cooked_sea_salted_chicken",
+    //() -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> COOKED_PINK_SALTED_CHICKEN = ITEMS.register("cooked_pink_salted_chicken",
+    //() -> new Item(new Item.Properties()));
+
+    //Mutton Variants
+    public static final DeferredItem<Item> SALTED_MUTTON = ITEMS.register("salted_mutton",
+            () -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> SEA_SALTED_MUTTON = ITEMS.register("sea_salted_mutton",
+    //() -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> PINK_SALTED_MUTTON = ITEMS.register("pink_salted_mutton",
+    //() -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> DRIED_MUTTON = ITEMS.register("dried_mutton",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.DRIED_MUTTON)));
+
+    public static final DeferredItem<Item> DRIED_SALTED_MUTTON = ITEMS.register("dried_salted_mutton",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.DRIED_SALTED_MUTTON)));
+
+    //public static final DeferredItem<Item> DRIED_SEA_SALTED_MUTTON = ITEMS.register("dried_sea_salted_mutton",
+    //() -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> DRIED_PINK_SALTED_MUTTON = ITEMS.register("dried_pink_salted_mutton",
+    //() -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> COOKED_SALTED_MUTTON = ITEMS.register("cooked_salted_mutton",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.COOKED_SALTED_MUTTON)));
+
+    //public static final DeferredItem<Item> COOKED_SEA_SALTED_MUTTON = ITEMS.register("cooked_sea_salted_mutton",
+    //() -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> COOKED_PINK_SALTED_MUTTON = ITEMS.register("cooked_pink_salted_mutton",
+    //() -> new Item(new Item.Properties()));
+
+    //Rabbit Variants
+    public static final DeferredItem<Item> SALTED_RABBIT = ITEMS.register("salted_rabbit",
+            () -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> SEA_SALTED_RABBIT = ITEMS.register("sea_salted_rabbit",
+    //() -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> PINK_SALTED_RABBIT = ITEMS.register("pink_salted_rabbit",
+    //() -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> DRIED_RABBIT = ITEMS.register("dried_rabbit",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.DRIED_RABBIT)));
+
+    public static final DeferredItem<Item> DRIED_SALTED_RABBIT = ITEMS.register("dried_salted_rabbit",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.DRIED_SALTED_RABBIT)));
+
+    //public static final DeferredItem<Item> DRIED_SEA_SALTED_RABBIT = ITEMS.register("dried_sea_salted_rabbit",
+    //() -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> DRIED_PINK_SALTED_RABBIT = ITEMS.register("dried_pink_salted_rabbit",
+    //() -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> COOKED_SALTED_RABBIT = ITEMS.register("cooked_salted_rabbit",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.COOKED_SALTED_RABBIT)));
+
+    //public static final DeferredItem<Item> COOKED_SEA_SALTED_RABBIT = ITEMS.register("cooked_sea_salted_rabbit",
+    //() -> new Item(new Item.Properties()));
+
+    //public static final DeferredItem<Item> COOKED_PINK_SALTED_RABBIT = ITEMS.register("cooked_pink_salted_rabbit",
+    //() -> new Item(new Item.Properties()));
+
+
+
+
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
