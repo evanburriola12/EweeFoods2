@@ -32,6 +32,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.SUSHI.get());
 
 
+        basicItem(ModItems.ONION.get());
+
+
         basicItem(ModItems.RICE_SEEDS.get());
         basicItem(ModItems.RICE.get());
 

@@ -1,6 +1,7 @@
 package net.ewee.eweefoods.datagen;
 
 import net.ewee.eweefoods.block.ModBlocks;
+import net.ewee.eweefoods.block.custom.OnionCropBlock;
 import net.ewee.eweefoods.block.custom.RiceCropBlock;
 import net.ewee.eweefoods.item.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -51,6 +52,21 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         this.add(ModBlocks.RICE_CROP.get(), this.createCropDrops(ModBlocks.RICE_CROP.get(),
                 ModItems.RICE.get(), ModItems.RICE_SEEDS.get(), lootItemConditionBuilder));
+
+        LootItemCondition.Builder onionCropCondition = LootItemBlockStatePropertyCondition
+                .hasBlockStateProperties(ModBlocks.ONION_CROP.get())
+                .setProperties(StatePropertiesPredicate.Builder.properties()
+                        .hasProperty(OnionCropBlock.AGE, OnionCropBlock.MAX_AGE));
+
+
+        this.add(ModBlocks.ONION_CROP.get(),
+                this.createCropDrops(
+                        ModBlocks.ONION_CROP.get(),
+                        ModItems.ONION.get(),
+                        ModItems.ONION.get(),
+                        onionCropCondition
+                )
+        );
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block block, Item item, float minDrops, float maxDrops) {

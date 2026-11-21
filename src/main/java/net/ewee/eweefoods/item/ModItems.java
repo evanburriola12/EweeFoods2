@@ -2,6 +2,7 @@ package net.ewee.eweefoods.item;
 
 import net.ewee.eweefoods.EweeFoods;
 import net.ewee.eweefoods.block.ModBlocks;
+import net.ewee.eweefoods.block.custom.OnionCropBlock;
 import net.ewee.eweefoods.item.custom.RevealItem;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -66,6 +67,9 @@ public class ModItems {
 
     public static final DeferredItem<Item> RICE_SEEDS = ITEMS.register("rice_seeds",
             () -> new ItemNameBlockItem(ModBlocks.RICE_CROP.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> ONION = ITEMS.register("onion",
+            () -> new ItemNameBlockItem(ModBlocks.ONION_CROP.get(), new Item.Properties().food(ModFoodProperties.ONION)));
 
 
     //Beef Variants

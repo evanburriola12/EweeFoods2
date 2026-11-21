@@ -50,6 +50,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> RICE_CROP = BLOCKS.register("rice_block",
             () -> new RiceCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS)));
 
+    public static final DeferredBlock<Block> ONION_CROP = BLOCKS.register("onion_block",
+            () -> new RiceCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS)));
+
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block){
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

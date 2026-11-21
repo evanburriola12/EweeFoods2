@@ -82,6 +82,11 @@ public class ModFoodProperties {
             .fast()
             .build();
 
+    public static final FoodProperties ONION = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
+
     public static final FoodProperties DRIED_BEEF = (new FoodProperties.Builder())
             .nutrition(5)
             .saturationModifier(.6F)
