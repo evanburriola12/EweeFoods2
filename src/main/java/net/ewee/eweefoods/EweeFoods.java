@@ -2,9 +2,13 @@ package net.ewee.eweefoods;
 
 import net.ewee.eweefoods.block.ModBlocks;
 import net.ewee.eweefoods.block.entity.ModBlockEntities;
+import net.ewee.eweefoods.block.entity.renderer.DryingRackBlockEntityRenderer;
 import net.ewee.eweefoods.item.ModCreativeModeTabs;
 import net.ewee.eweefoods.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -71,4 +75,16 @@ public class EweeFoods {
     public void onServerStarting(ServerStartingEvent event) {
 
     }
+
+    @EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
+    public static class ClientModEvents{
+
+        @SubscribeEvent
+        public static void registerBER(EntityRenderersEvent.RegisterRenderers event){
+            event.registerBlockEntityRenderer(ModBlockEntities.DRYING_RACK_BE.get(), DryingRackBlockEntityRenderer::new);
+        }
+
+    }
+
+
 }

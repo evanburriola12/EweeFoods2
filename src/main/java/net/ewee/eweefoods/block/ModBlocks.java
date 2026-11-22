@@ -52,7 +52,9 @@ public class ModBlocks {
             () -> new RiceCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS)));
 
     public static final DeferredBlock<Block> DRYING_RACK = registerBlock("drying_rack",
-            () -> new DryingRackBlock(BlockBehaviour.Properties.of().noOcclusion()));
+            () -> new DryingRackBlock(BlockBehaviour.Properties.of()
+                    .noOcclusion()
+                    .strength(2f)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block){
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

@@ -15,7 +15,7 @@ public class DryingRackBlockEntity extends BlockEntity {
     public final ItemStackHandler inventory = new ItemStackHandler(3){
         @Override
         protected int getStackLimit(int slot, ItemStack stack) {
-            return 3;
+            return 1;
         }
 
         @Override
@@ -27,8 +27,35 @@ public class DryingRackBlockEntity extends BlockEntity {
         }
     };
 
+    private float rotation;
+
     public DryingRackBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.DRYING_RACK_BE.get(), pos, blockState);
+    }
+
+    public float getRenderingRotation(){
+        return rotation = 0f;
+    }
+
+    // Find the and return index of first open item slot or return -1
+    public int openItemStackIndex(){
+        for (int i = 0; i < inventory.getSlots(); i++){
+            if (inventory.getStackInSlot(i).isEmpty()){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // Pop the latest item off the inventory or return null if none
+    // Later will intelligently pop off only "finished" items first
+    public ItemStack extractItemStack(){
+        for (int i = inventory.getSlots() - 1; i >= 0; i--){
+            if(!inventory.getStackInSlot(i).isEmpty()){
+                return inventory.extractItem(i,1,false);
+            }
+        }
+        return ItemStack.EMPTY;
     }
 
     public void clearContents(){
