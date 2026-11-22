@@ -2,6 +2,7 @@ package net.ewee.eweefoods.datagen;
 
 import net.ewee.eweefoods.block.ModBlocks;
 import net.ewee.eweefoods.block.custom.OnionCropBlock;
+import net.ewee.eweefoods.block.custom.PepperCropBlock;
 import net.ewee.eweefoods.block.custom.RiceCropBlock;
 import net.ewee.eweefoods.item.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -14,6 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
@@ -47,12 +49,54 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         dropSelf(ModBlocks.SALT_LAMP.get());
 
+
+        //Rice crop drops
         LootItemCondition.Builder lootItemConditionBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.RICE_CROP.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(RiceCropBlock.AGE, 3));
 
         this.add(ModBlocks.RICE_CROP.get(), this.createCropDrops(ModBlocks.RICE_CROP.get(),
-                ModItems.RICE.get(), ModItems.RICE_SEEDS.get(), lootItemConditionBuilder));
+                ModItems.RICE.get(),
+                ModItems.RICE_SEEDS.get(),
+                lootItemConditionBuilder));
 
+
+        //Pepper crop drops
+        LootItemCondition.Builder greenPepperCondition =
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.PEPPER_CROP.get())
+                        .setProperties(StatePropertiesPredicate.Builder.properties()
+                                .hasProperty(PepperCropBlock.AGE, 4));
+
+        LootItemCondition.Builder yellowPepperCondition =
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.PEPPER_CROP.get())
+                        .setProperties(StatePropertiesPredicate.Builder.properties()
+                                .hasProperty(PepperCropBlock.AGE, 5));
+
+        LootItemCondition.Builder redPepperCondition =
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.PEPPER_CROP.get())
+                        .setProperties(StatePropertiesPredicate.Builder.properties()
+                                .hasProperty(PepperCropBlock.AGE, 6));
+
+        this.add(ModBlocks.PEPPER_CROP.get(),
+                LootTable.lootTable()
+
+                        .withPool(LootPool.lootPool()
+                                .when(greenPepperCondition)
+                                .add(LootItem.lootTableItem(ModItems.GREEN_PEPPER.get())))
+
+                        .withPool(LootPool.lootPool()
+                                .when(yellowPepperCondition)
+                                .add(LootItem.lootTableItem(ModItems.YELLOW_PEPPER.get())))
+
+                        .withPool(LootPool.lootPool()
+                                .when(redPepperCondition)
+                                .add(LootItem.lootTableItem(ModItems.RED_PEPPER.get())))
+
+                        .withPool(LootPool.lootPool()
+                                .add(LootItem.lootTableItem(ModItems.PEPPER_SEEDS.get())))
+        );
+
+
+        //Onion crop drops
         LootItemCondition.Builder onionCropCondition = LootItemBlockStatePropertyCondition
                 .hasBlockStateProperties(ModBlocks.ONION_CROP.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties()

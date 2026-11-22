@@ -3,12 +3,15 @@ package net.ewee.eweefoods.datagen;
 import net.ewee.eweefoods.Config;
 import net.ewee.eweefoods.EweeFoods;
 import net.ewee.eweefoods.block.ModBlocks;
+import net.ewee.eweefoods.block.custom.OnionCropBlock;
+import net.ewee.eweefoods.block.custom.PepperCropBlock;
 import net.ewee.eweefoods.block.custom.RiceCropBlock;
 import net.ewee.eweefoods.block.custom.SaltLampBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -32,24 +35,33 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         customLamp();
 
-        makeCrop(((CropBlock) ModBlocks.RICE_CROP.get()), "rice_crop_stage", "rice_crop_stage");
-        makeCrop(((CropBlock) ModBlocks.ONION_CROP.get()), "onion_crop_stage", "onion_crop_stage");
+        makeCrop(((CropBlock) ModBlocks.RICE_CROP.get()), RiceCropBlock.AGE, "rice_crop_stage","rice_crop_stage");
+        makeCrop(((CropBlock) ModBlocks.ONION_CROP.get()), OnionCropBlock.AGE, "onion_crop_stage","onion_crop_stage");
+        makeCrop(((CropBlock) ModBlocks.PEPPER_CROP.get()), PepperCropBlock.AGE, "pepper_crop_stage","pepper_crop_stage");
 
     }
 
-    public void makeCrop(CropBlock block, String modelName, String textureName) {
-        Function<BlockState, ConfiguredModel[]> function = state -> states(state, block, modelName, textureName);
+    public void makeCrop(CropBlock block, IntegerProperty ageProperty, String modelName, String textureName) {
+        Function<BlockState, ConfiguredModel[]> function =
+                state -> states(state, ageProperty, modelName, textureName);
 
         getVariantBuilder(block).forAllStates(function);
     }
 
-    private ConfiguredModel[] states(BlockState state, CropBlock block, String modelName, String textureName) {
+    private ConfiguredModel[] states(BlockState state, IntegerProperty ageProperty, String modelName, String textureName) {
         ConfiguredModel[] models = new ConfiguredModel[1];
-        models[0] = new ConfiguredModel(models().crop(modelName + state.getValue(((RiceCropBlock) block).getAgeProperty()),
-            ResourceLocation.fromNamespaceAndPath(EweeFoods.MOD_ID, "block/" + textureName + state.getValue(((RiceCropBlock) block).getAgeProperty()))).renderType("cutout"));
+
+        int age = state.getValue(ageProperty);
+
+        models[0] = new ConfiguredModel(models().crop(
+                modelName + age,
+                ResourceLocation.fromNamespaceAndPath(
+                        EweeFoods.MOD_ID,
+                        "block/" + textureName + age
+                )
+        ).renderType("cutout"));
 
         return models;
-
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock){

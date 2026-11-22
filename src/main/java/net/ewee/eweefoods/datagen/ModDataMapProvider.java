@@ -22,7 +22,10 @@ public class ModDataMapProvider extends DataMapProvider {
 
         this.builder(NeoForgeDataMaps.COMPOSTABLES)
                 .add(ModItems.RICE_SEEDS.getId(), new Compostable(0.25f), false)
-                .add(ModItems.RICE.getId(), new Compostable(0.25f), false)
-                .add(ModItems.ONION.getId(), new Compostable(0.25f), false);
+                .add(ModItems.RICE.getId(), new Compostable(0.45f), false)
+                .add(ModItems.ONION.getId(), new Compostable(0.45f), false)
+                .add(ModItems.GREEN_PEPPER.getId(), new Compostable(0.45f), false)
+                .add(ModItems.RED_PEPPER.getId(), new Compostable(0.45f), false)
+                .add(ModItems.YELLOW_PEPPER.getId(), new Compostable(0.45f), false);
     }
 }

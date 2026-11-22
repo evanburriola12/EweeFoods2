@@ -37,7 +37,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.LAMB_BAT);
                         output.accept(ModItems.SUSHI);
                         output.accept(ModItems.ONION);
-
+                        output.accept(ModItems.GREEN_PEPPER);
+                        output.accept(ModItems.RED_PEPPER);
+                        output.accept(ModItems.YELLOW_PEPPER);
+                        output.accept(ModItems.PEPPER_SEEDS);
 
                         output.accept(ModBlocks.PINK_SALT_DEPOSIT);
                         output.accept(ModBlocks.PINK_SALT_BLOCK);

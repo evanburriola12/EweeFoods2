@@ -2,6 +2,8 @@ package net.ewee.eweefoods.block;
 
 import com.mojang.serialization.MapCodec;
 import net.ewee.eweefoods.EweeFoods;
+import net.ewee.eweefoods.block.custom.OnionCropBlock;
+import net.ewee.eweefoods.block.custom.PepperCropBlock;
 import net.ewee.eweefoods.block.custom.RiceCropBlock;
 import net.ewee.eweefoods.block.custom.SaltLampBlock;
 import net.ewee.eweefoods.item.ModItems;
@@ -51,7 +53,10 @@ public class ModBlocks {
             () -> new RiceCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS)));
 
     public static final DeferredBlock<Block> ONION_CROP = BLOCKS.register("onion_block",
-            () -> new RiceCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS)));
+            () -> new OnionCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS)));
+
+    public static final DeferredBlock<Block> PEPPER_CROP = BLOCKS.register("pepper_block",
+            () -> new PepperCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block){
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

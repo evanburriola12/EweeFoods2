@@ -161,4 +161,9 @@ public class ModFoodProperties {
             .nutrition(5)
             .saturationModifier(.6F)
             .build();
+
+    public static final FoodProperties PEPPER = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationModifier(.6F)
+            .build();
 }

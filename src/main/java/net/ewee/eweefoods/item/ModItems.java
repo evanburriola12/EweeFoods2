@@ -68,8 +68,20 @@ public class ModItems {
     public static final DeferredItem<Item> RICE_SEEDS = ITEMS.register("rice_seeds",
             () -> new ItemNameBlockItem(ModBlocks.RICE_CROP.get(), new Item.Properties()));
 
+    public static final DeferredItem<Item> PEPPER_SEEDS = ITEMS.register("pepper_seeds",
+            () -> new ItemNameBlockItem(ModBlocks.PEPPER_CROP.get(), new Item.Properties()));
+
     public static final DeferredItem<Item> ONION = ITEMS.register("onion",
             () -> new ItemNameBlockItem(ModBlocks.ONION_CROP.get(), new Item.Properties().food(ModFoodProperties.ONION)));
+
+    public static final DeferredItem<Item> GREEN_PEPPER = ITEMS.register("green_pepper",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.PEPPER)));
+
+    public static final DeferredItem<Item> RED_PEPPER = ITEMS.register("red_pepper",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.PEPPER)));
+
+    public static final DeferredItem<Item> YELLOW_PEPPER = ITEMS.register("yellow_pepper",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.PEPPER)));
 
 
     //Beef Variants

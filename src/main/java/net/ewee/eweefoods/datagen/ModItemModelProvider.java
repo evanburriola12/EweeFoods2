@@ -35,6 +35,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.ONION.get());
 
 
+        basicItem(ModItems.PEPPER_SEEDS.get());
+        basicItem(ModItems.GREEN_PEPPER.get());
+        basicItem(ModItems.RED_PEPPER.get());
+        basicItem(ModItems.YELLOW_PEPPER.get());
+
         basicItem(ModItems.RICE_SEEDS.get());
         basicItem(ModItems.RICE.get());
 
@@ -43,20 +48,20 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.DRIED_SALTED_BEEF.get());
         basicItem(ModItems.COOKED_SALTED_BEEF.get());
 
-        //basicItem(ModItems.SALTED_PORK.get());
-        //basicItem(ModItems.DRIED_PORK.get());
-        //basicItem(ModItems.DRIED_SALTED_PORK.get());
-        //basicItem(ModItems.COOKED_SALTED_PORK.get());
+        basicItem(ModItems.SALTED_PORK.get());
+        basicItem(ModItems.DRIED_PORK.get());
+        basicItem(ModItems.DRIED_SALTED_PORK.get());
+        basicItem(ModItems.COOKED_SALTED_PORK.get());
 
         basicItem(ModItems.SALTED_CHICKEN.get());
         //basicItem(ModItems.DRIED_CHICKEN.get());
         //basicItem(ModItems.DRIED_SALTED_CHICKEN.get());
         basicItem(ModItems.COOKED_SALTED_CHICKEN.get());
 
-        //basicItem(ModItems.SALTED_MUTTON.get());
-        //basicItem(ModItems.DRIED_MUTTON.get());
-        //basicItem(ModItems.DRIED_SALTED_MUTTON.get());
-        //basicItem(ModItems.COOKED_SALTED_MUTTON.get());
+        basicItem(ModItems.SALTED_MUTTON.get());
+        basicItem(ModItems.DRIED_MUTTON.get());
+        basicItem(ModItems.DRIED_SALTED_MUTTON.get());
+        basicItem(ModItems.COOKED_SALTED_MUTTON.get());
 
         //basicItem(ModItems.SALTED_RABBIT.get());
         //basicItem(ModItems.DRIED_RABBIT.get());
