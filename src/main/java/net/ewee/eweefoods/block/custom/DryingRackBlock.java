@@ -27,7 +27,7 @@ import org.antlr.v4.runtime.tree.xpath.XPathLexerErrorListener;
 import org.jetbrains.annotations.Nullable;
 
 public class DryingRackBlock extends BaseEntityBlock {
-    public static final VoxelShape SHAPE = Block.box(0,0,0,32,32,16);
+    public static final VoxelShape SHAPE = Block.box(0,0,0,16,16,16);
     public static final MapCodec<DryingRackBlock> CODEC = simpleCodec(DryingRackBlock::new);
 
     public DryingRackBlock(Properties properties) {
