@@ -5,7 +5,7 @@ import net.ewee.eweefoods.block.entity.ModBlockEntities;
 import net.ewee.eweefoods.block.entity.renderer.DryingRackBlockEntityRenderer;
 import net.ewee.eweefoods.item.ModCreativeModeTabs;
 import net.ewee.eweefoods.item.ModItems;
-import net.minecraft.world.item.CreativeModeTabs;
+import net.ewee.eweefoods.recipe.ModRecipes;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -46,6 +46,8 @@ public class EweeFoods {
         ModBlocks.register(modEventBus);
 
         ModBlockEntities.register(modEventBus);
+
+        ModRecipes.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);

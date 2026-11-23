@@ -1,0 +1,9 @@
+{
+  "type": "eweefoods:drying_rack",
+  "ingredient": {
+    "item": "eweefoods:salted_beef"
+  },
+  "result": {
+    "id": "eweefoods:dried_salted_beef"
+  }
+}

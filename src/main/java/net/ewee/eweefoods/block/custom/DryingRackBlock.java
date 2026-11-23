@@ -3,6 +3,7 @@ package net.ewee.eweefoods.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.ewee.eweefoods.EweeFoods;
 import net.ewee.eweefoods.block.entity.DryingRackBlockEntity;
+import net.ewee.eweefoods.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.protocol.game.ClientboundSoundPacket;
@@ -19,6 +20,8 @@ import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -113,5 +116,16 @@ public class DryingRackBlock extends BaseEntityBlock {
 
         // As a client, listen to what the server reports the result as
         return ItemInteractionResult.CONSUME;
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        if(level.isClientSide()) {
+            return null;
+        }
+
+        return createTickerHelper(blockEntityType, ModBlockEntities.DRYING_RACK_BE.get(),
+                (level1, blockPos, blockState, blockEntity) -> blockEntity.tick(level1, blockPos, blockState));
     }
 }
