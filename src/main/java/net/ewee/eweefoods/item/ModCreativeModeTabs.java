@@ -83,6 +83,16 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DRIED_SALTED_RABBIT);
                         output.accept(ModItems.COOKED_SALTED_RABBIT);
 
+                        output.accept(ModBlocks.APPLE_LOG);
+                        output.accept(ModBlocks.APPLE_WOOD);
+                        output.accept(ModBlocks.STRIPPED_APPLE_LOG);
+                        output.accept(ModBlocks.STRIPPED_APPLE_WOOD);
+
+                        output.accept(ModBlocks.APPLE_PLANKS);
+                        output.accept(ModBlocks.APPLE_SAPLING);
+
+                        output.accept(ModBlocks.APPLE_LEAVES);
+
 
                     })).build());
 

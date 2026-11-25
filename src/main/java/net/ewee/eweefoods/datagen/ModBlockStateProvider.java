@@ -7,9 +7,12 @@ import net.ewee.eweefoods.block.custom.OnionCropBlock;
 import net.ewee.eweefoods.block.custom.PepperCropBlock;
 import net.ewee.eweefoods.block.custom.RiceCropBlock;
 import net.ewee.eweefoods.block.custom.SaltLampBlock;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.fml.common.Mod;
@@ -39,6 +42,35 @@ public class ModBlockStateProvider extends BlockStateProvider {
         makeCrop(((CropBlock) ModBlocks.ONION_CROP.get()), OnionCropBlock.AGE, "onion_crop_stage","onion_crop_stage");
         makeCrop(((CropBlock) ModBlocks.PEPPER_CROP.get()), PepperCropBlock.AGE, "pepper_crop_stage","pepper_crop_stage");
 
+
+        logBlock(((RotatedPillarBlock) ModBlocks.APPLE_LOG.get()));
+        logBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_APPLE_LOG.get()));
+
+        axisBlock(((RotatedPillarBlock) ModBlocks.APPLE_WOOD.get()), blockTexture(ModBlocks.APPLE_LOG.get()), blockTexture(ModBlocks.APPLE_LOG.get()));
+        axisBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_APPLE_WOOD.get()), blockTexture(ModBlocks.STRIPPED_APPLE_LOG.get()), blockTexture(ModBlocks.STRIPPED_APPLE_LOG.get()));
+
+        simpleBlockItem(ModBlocks.APPLE_LOG.get(),
+                models().getExistingFile(modLoc("block/apple_log")));
+
+        simpleBlockItem(ModBlocks.STRIPPED_APPLE_LOG.get(),
+                models().getExistingFile(modLoc("block/stripped_apple_log")));
+
+        simpleBlockItem(ModBlocks.APPLE_WOOD.get(),
+                models().getExistingFile(modLoc("block/apple_wood")));
+
+        simpleBlockItem(ModBlocks.STRIPPED_APPLE_WOOD.get(),
+                models().getExistingFile(modLoc("block/stripped_apple_wood")));
+
+        blockWithItem(ModBlocks.APPLE_PLANKS);
+
+        saplingBlock(ModBlocks.APPLE_SAPLING);
+
+
+    }
+
+    private void saplingBlock(DeferredBlock<Block> blockRegistryObject) {
+        simpleBlock(blockRegistryObject.get(),
+                models().cross(BuiltInRegistries.BLOCK.getKey(blockRegistryObject.get()).getPath(), blockTexture(blockRegistryObject.get())).renderType("cutout"));
     }
 
     public void makeCrop(CropBlock block, IntegerProperty ageProperty, String modelName, String textureName) {

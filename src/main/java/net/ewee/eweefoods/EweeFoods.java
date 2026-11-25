@@ -1,9 +1,12 @@
 package net.ewee.eweefoods;
 
+import net.ewee.eweefoods.block.ModBlockEntities;
 import net.ewee.eweefoods.block.ModBlocks;
+import net.ewee.eweefoods.client.ClientModEvents;
 import net.ewee.eweefoods.item.ModCreativeModeTabs;
 import net.ewee.eweefoods.item.ModItems;
-import net.minecraft.world.item.CreativeModeTabs;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.loading.FMLEnvironment;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -39,12 +42,18 @@ public class EweeFoods {
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            ClientModEvents.register(modEventBus);
+        }
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

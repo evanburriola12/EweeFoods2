@@ -49,6 +49,16 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         dropSelf(ModBlocks.SALT_LAMP.get());
 
+        dropSelf(ModBlocks.APPLE_LOG.get());
+        dropSelf(ModBlocks.APPLE_WOOD.get());
+        dropSelf(ModBlocks.STRIPPED_APPLE_WOOD.get());
+        dropSelf(ModBlocks.STRIPPED_APPLE_LOG.get());
+        dropSelf(ModBlocks.APPLE_PLANKS.get());
+        dropSelf(ModBlocks.APPLE_SAPLING.get());
+
+        this.add(ModBlocks.APPLE_LEAVES.get(), block ->
+                createLeavesDrops(block, ModBlocks.APPLE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+
 
         //Rice crop drops
         LootItemCondition.Builder lootItemConditionBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.RICE_CROP.get())

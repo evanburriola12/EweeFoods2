@@ -1,11 +1,16 @@
 package net.ewee.eweefoods.datagen;
 
 import net.ewee.eweefoods.EweeFoods;
+import net.ewee.eweefoods.block.ModBlocks;
 import net.ewee.eweefoods.item.ModItems;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -30,6 +35,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.BACON_AND_EGGS.get());
         basicItem(ModItems.LAMB_BAT.get());
         basicItem(ModItems.SUSHI.get());
+
+        saplingItem(ModBlocks.APPLE_SAPLING);
 
 
         basicItem(ModItems.ONION.get());
@@ -68,4 +75,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         //basicItem(ModItems.DRIED_SALTED_RABBIT.get());
         //basicItem(ModItems.COOKED_SALTED_RABBIT.get());
     }
+
+    private ItemModelBuilder saplingItem(DeferredBlock<Block> item) {
+        return withExistingParent(item.getId().getPath(),
+                ResourceLocation.parse("item/generated")).texture("layer0",
+                ResourceLocation.fromNamespaceAndPath(EweeFoods.MOD_ID,"block/" + item.getId().getPath()));
+    }
+
 }

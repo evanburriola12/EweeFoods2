@@ -5,6 +5,7 @@ import net.ewee.eweefoods.block.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -33,6 +34,12 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.PINK_SALT_BLOCK.get())
                 .add(ModBlocks.SEA_SALT_BlOCK.get())
                 .add(ModBlocks.SALT_BlOCK.get());
+
+        this.tag(BlockTags.LOGS_THAT_BURN)
+                .add(ModBlocks.APPLE_LOG.get())
+                .add(ModBlocks.APPLE_WOOD.get())
+                .add(ModBlocks.STRIPPED_APPLE_LOG.get())
+                .add(ModBlocks.STRIPPED_APPLE_WOOD.get());
     }
 
 
