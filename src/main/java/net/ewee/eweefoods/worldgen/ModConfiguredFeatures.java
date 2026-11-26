@@ -26,10 +26,10 @@ import java.util.List;
 public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_PINK_SALT_DEPOSIT_KEY = registerKey("salt_deposit");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_SEA_SALT_DEPOSIT_KEY = registerKey("sea_salt_deposit");
-
     public static final ResourceKey<ConfiguredFeature<?, ?>> APPLEWOOD_KEY = registerKey("applewood");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+
         RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
 
         List<OreConfiguration.TargetBlockState> overworldPinkSaltDeposits = List.of(
@@ -45,6 +45,7 @@ public class ModConfiguredFeatures {
         register(context, OVERWORLD_PINK_SALT_DEPOSIT_KEY, Feature.ORE, new OreConfiguration(overworldPinkSaltDeposits, 6));
         register(context, OVERWORLD_SEA_SALT_DEPOSIT_KEY, Feature.ORE, new OreConfiguration(overworldSeaSaltDeposits, 12));
 
+        //What the tree looks like
         register(context, APPLEWOOD_KEY, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         BlockStateProvider.simple(ModBlocks.APPLE_LOG.get()),

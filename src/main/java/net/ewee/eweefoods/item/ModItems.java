@@ -62,6 +62,7 @@ public class ModItems {
     public static final DeferredItem<Item> SUSHI = ITEMS.register("sushi",
             () -> new Item(new Item.Properties().food(ModFoodProperties.SUSHI)));
 
+    //Crops
     public static final DeferredItem<Item> RICE = ITEMS.register("rice",
             () -> new Item(new Item.Properties()));
 

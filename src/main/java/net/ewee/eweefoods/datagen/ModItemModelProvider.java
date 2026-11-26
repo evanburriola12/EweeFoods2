@@ -19,6 +19,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+
         basicItem(ModItems.SALT.get());
         basicItem(ModItems.SEA_SALT.get());
         basicItem(ModItems.PINK_SALT.get());
@@ -38,9 +39,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         saplingItem(ModBlocks.APPLE_SAPLING);
 
-
         basicItem(ModItems.ONION.get());
-
 
         basicItem(ModItems.PEPPER_SEEDS.get());
         basicItem(ModItems.GREEN_PEPPER.get());

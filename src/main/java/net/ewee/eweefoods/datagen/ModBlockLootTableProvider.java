@@ -35,27 +35,26 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+
         add(ModBlocks.PINK_SALT_DEPOSIT.get(),
                block ->  createMultipleOreDrops(ModBlocks.PINK_SALT_DEPOSIT.get(), ModItems.PINK_SALT.get(), 2, 6));
-
         add(ModBlocks.SEA_SALT_DEPOSIT.get(),
                 block -> createMultipleOreDrops(ModBlocks.SEA_SALT_DEPOSIT.get(), ModItems.SEA_SALT.get(), 2, 6));
 
+        //Salt Blocks
         dropSelf(ModBlocks.PINK_SALT_BLOCK.get());
-
         dropSelf(ModBlocks.SEA_SALT_BlOCK.get());
-
         dropSelf(ModBlocks.SALT_BlOCK.get());
-
         dropSelf(ModBlocks.SALT_LAMP.get());
 
+        //Apple Tree
         dropSelf(ModBlocks.APPLE_LOG.get());
         dropSelf(ModBlocks.APPLE_WOOD.get());
         dropSelf(ModBlocks.STRIPPED_APPLE_WOOD.get());
         dropSelf(ModBlocks.STRIPPED_APPLE_LOG.get());
         dropSelf(ModBlocks.APPLE_PLANKS.get());
         dropSelf(ModBlocks.APPLE_SAPLING.get());
-
+        //Leaves drop saplings
         this.add(ModBlocks.APPLE_LEAVES.get(), block ->
                 createLeavesDrops(block, ModBlocks.APPLE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
 
@@ -70,7 +69,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 lootItemConditionBuilder));
 
 
-        //Pepper crop drops
+        //Pepper crop drops. Drops different pepper color based on age
         LootItemCondition.Builder greenPepperCondition =
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.PEPPER_CROP.get())
                         .setProperties(StatePropertiesPredicate.Builder.properties()
@@ -102,11 +101,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                                 .add(LootItem.lootTableItem(ModItems.RED_PEPPER.get())))
 
                         .withPool(LootPool.lootPool()
-                                .add(LootItem.lootTableItem(ModItems.PEPPER_SEEDS.get())))
-        );
+                                .add(LootItem.lootTableItem(ModItems.PEPPER_SEEDS.get()))));
 
 
-        //Onion crop drops
+        //Onion crop drops. Works like carrots
         LootItemCondition.Builder onionCropCondition = LootItemBlockStatePropertyCondition
                 .hasBlockStateProperties(ModBlocks.ONION_CROP.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties()
@@ -118,9 +116,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                         ModBlocks.ONION_CROP.get(),
                         ModItems.ONION.get(),
                         ModItems.ONION.get(),
-                        onionCropCondition
-                )
-        );
+                        onionCropCondition));
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block block, Item item, float minDrops, float maxDrops) {

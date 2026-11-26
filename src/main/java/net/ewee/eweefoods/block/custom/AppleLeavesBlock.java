@@ -48,8 +48,8 @@ public class AppleLeavesBlock extends LeavesBlock implements EntityBlock {
             Level level,
             BlockPos pos,
             Player player,
-            BlockHitResult hit
-    ) {
+            BlockHitResult hit) {
+
         if (!(level.getBlockEntity(pos) instanceof AppleLeavesBlockEntity blockEntity)) {
             return InteractionResult.PASS;
         }

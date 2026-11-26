@@ -15,7 +15,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -24,6 +23,8 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(EweeFoods.MOD_ID);
 
+
+    //Salts
     public static final DeferredBlock<Block> PINK_SALT_DEPOSIT = registerBlock("pink_salt_deposit",
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.CALCITE)));
@@ -49,9 +50,12 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of()
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.CALCITE)));
 
+    //Salt Lamp
     public static final DeferredBlock<Block> SALT_LAMP = registerBlock("salt_lamp",
             () -> new SaltLampBlock(BlockBehaviour.Properties.of().strength(0.2f).lightLevel(state -> state.getValue(SaltLampBlock.CLICKED) ? 15 : 0)));
 
+
+    //Crops
     public static final DeferredBlock<Block> RICE_CROP = BLOCKS.register("rice_block",
             () -> new RiceCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS)));
 
@@ -61,6 +65,13 @@ public class ModBlocks {
     public static final DeferredBlock<Block> PEPPER_CROP = BLOCKS.register("pepper_block",
             () -> new PepperCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS)));
 
+
+    //Apple Tree
+    public static final DeferredBlock<Block> APPLE_LEAVES = registerBlock("apple_leaves",
+            () -> new AppleLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).randomTicks()));
+
+    public static final DeferredBlock<Block> APPLE_SAPLING = registerBlock("apple_sapling",
+            () -> new SaplingBlock(ModTreeGrower.APPLEWOOD, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
 
     public static final DeferredBlock<Block> APPLE_LOG = registerBlock("apple_log",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)));
@@ -76,6 +87,8 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> APPLE_PLANKS = registerBlock("apple_planks",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)) {
+
+                //Do I need this? I think kaupenjoe had this added for some reason. PLanks are different for some reason
                 @Override
                 public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
                     return true;
@@ -92,11 +105,7 @@ public class ModBlocks {
                 }
             });
 
-    public static final DeferredBlock<Block> APPLE_LEAVES = registerBlock("apple_leaves",
-            () -> new AppleLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).randomTicks()));
 
-    public static final DeferredBlock<Block> APPLE_SAPLING = registerBlock("apple_sapling",
-            () -> new SaplingBlock(ModTreeGrower.APPLEWOOD, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
 
 
 

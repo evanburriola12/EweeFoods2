@@ -23,6 +23,7 @@ public class ModBiomeModifiers {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
 
+//        Dont think we need this anymore?
 //        context.register(ADD_SALT_DEPOSIT, new BiomeModifiers.AddFeaturesBiomeModifier(
 //                HolderSet.direct(biomes.getOrThrow(Biomes.STONY_PEAKS), biomes.getOrThrow(Biomes.JAGGED_PEAKS), biomes.getOrThrow(Biomes.FROZEN_PEAKS)),
 //                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.SALT_DEPOSIT_PLACED_KEY)),

@@ -18,8 +18,6 @@ public class AppleLeavesBlockEntity extends BlockEntity {
 
     private int appleCount = 0;
 
-
-
     public AppleLeavesBlockEntity(
             BlockPos pos,
             BlockState state) {

@@ -19,9 +19,7 @@ public class ModCreativeModeTabs {
             () -> CreativeModeTab.builder().icon(()-> new ItemStack(ModItems.BACON_AND_EGGS.get()))
                     .title(Component.translatable("creativetab.eweefoods"))
                     .displayItems(((itemDisplayParameters, output) -> {
-                        output.accept(ModItems.SALT);
-                        output.accept(ModItems.SEA_SALT);
-                        output.accept(ModItems.PINK_SALT);
+
                         output.accept(ModItems.FLOUR);
                         output.accept(ModItems.FLOUR_BAG);
                         output.accept(ModItems.CURED_MEAT);
@@ -36,27 +34,26 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BACON_AND_EGGS);
                         output.accept(ModItems.LAMB_BAT);
                         output.accept(ModItems.SUSHI);
+
+
+                        //Everything Salt
+                        output.accept(ModItems.SALT);
+                        output.accept(ModItems.SEA_SALT);
+                        output.accept(ModItems.PINK_SALT);
+                        output.accept(ModBlocks.PINK_SALT_DEPOSIT);
+                        output.accept(ModBlocks.PINK_SALT_BLOCK);
+                        output.accept(ModBlocks.SEA_SALT_DEPOSIT);
+                        output.accept(ModBlocks.SEA_SALT_BlOCK);
+                        output.accept(ModBlocks.SALT_BlOCK);
+                        output.accept(ModBlocks.SALT_LAMP);
+
+                        output.accept(ModItems.RICE_SEEDS);
+                        output.accept(ModItems.RICE);
                         output.accept(ModItems.ONION);
                         output.accept(ModItems.GREEN_PEPPER);
                         output.accept(ModItems.RED_PEPPER);
                         output.accept(ModItems.YELLOW_PEPPER);
                         output.accept(ModItems.PEPPER_SEEDS);
-
-                        output.accept(ModBlocks.PINK_SALT_DEPOSIT);
-                        output.accept(ModBlocks.PINK_SALT_BLOCK);
-                        output.accept(ModBlocks.SEA_SALT_DEPOSIT);
-                        output.accept(ModBlocks.SEA_SALT_BlOCK);
-
-
-                        output.accept(ModBlocks.SALT_BlOCK);
-                        output.accept(ModBlocks.SALT_LAMP);
-                        output.accept(ModItems.RICE_SEEDS);
-                        output.accept(ModItems.RICE);
-
-
-
-                        output.accept(ModItems.RICE_SEEDS);
-                        output.accept(ModItems.RICE);
 
                         output.accept(ModItems.DRIED_BEEF);
                         output.accept(ModItems.SALTED_BEEF);
@@ -83,14 +80,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DRIED_SALTED_RABBIT);
                         output.accept(ModItems.COOKED_SALTED_RABBIT);
 
+                        //Everything Apple Tree
                         output.accept(ModBlocks.APPLE_LOG);
                         output.accept(ModBlocks.APPLE_WOOD);
                         output.accept(ModBlocks.STRIPPED_APPLE_LOG);
                         output.accept(ModBlocks.STRIPPED_APPLE_WOOD);
-
                         output.accept(ModBlocks.APPLE_PLANKS);
                         output.accept(ModBlocks.APPLE_SAPLING);
-
                         output.accept(ModBlocks.APPLE_LEAVES);
 
 

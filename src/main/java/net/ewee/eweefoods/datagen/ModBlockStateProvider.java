@@ -30,41 +30,37 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+
         blockWithItem(ModBlocks.PINK_SALT_DEPOSIT);
         blockWithItem(ModBlocks.PINK_SALT_BLOCK);
         blockWithItem(ModBlocks.SEA_SALT_DEPOSIT);
         blockWithItem(ModBlocks.SEA_SALT_BlOCK);
         blockWithItem(ModBlocks.SALT_BlOCK);
 
-        customLamp();
 
         makeCrop(((CropBlock) ModBlocks.RICE_CROP.get()), RiceCropBlock.AGE, "rice_crop_stage","rice_crop_stage");
         makeCrop(((CropBlock) ModBlocks.ONION_CROP.get()), OnionCropBlock.AGE, "onion_crop_stage","onion_crop_stage");
         makeCrop(((CropBlock) ModBlocks.PEPPER_CROP.get()), PepperCropBlock.AGE, "pepper_crop_stage","pepper_crop_stage");
 
-
+        //Apple Tree Stuff
         logBlock(((RotatedPillarBlock) ModBlocks.APPLE_LOG.get()));
         logBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_APPLE_LOG.get()));
 
         axisBlock(((RotatedPillarBlock) ModBlocks.APPLE_WOOD.get()), blockTexture(ModBlocks.APPLE_LOG.get()), blockTexture(ModBlocks.APPLE_LOG.get()));
         axisBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_APPLE_WOOD.get()), blockTexture(ModBlocks.STRIPPED_APPLE_LOG.get()), blockTexture(ModBlocks.STRIPPED_APPLE_LOG.get()));
 
+        //Why is this like this? Kaupenjoe?
         simpleBlockItem(ModBlocks.APPLE_LOG.get(),
                 models().getExistingFile(modLoc("block/apple_log")));
-
         simpleBlockItem(ModBlocks.STRIPPED_APPLE_LOG.get(),
                 models().getExistingFile(modLoc("block/stripped_apple_log")));
-
         simpleBlockItem(ModBlocks.APPLE_WOOD.get(),
                 models().getExistingFile(modLoc("block/apple_wood")));
-
         simpleBlockItem(ModBlocks.STRIPPED_APPLE_WOOD.get(),
                 models().getExistingFile(modLoc("block/stripped_apple_wood")));
 
         blockWithItem(ModBlocks.APPLE_LEAVES);
-
         blockWithItem(ModBlocks.APPLE_PLANKS);
-
         saplingBlock(ModBlocks.APPLE_SAPLING);
 
 
