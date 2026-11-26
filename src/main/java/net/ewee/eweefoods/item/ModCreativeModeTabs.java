@@ -89,6 +89,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.APPLE_SAPLING);
                         output.accept(ModBlocks.APPLE_LEAVES);
 
+                        output.accept(ModBlocks.DRYING_RACK);
+
 
                     })).build());
 

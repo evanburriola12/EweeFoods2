@@ -43,8 +43,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ModItems.COOKED_SALTED_CHICKEN.get(), "cooked_salted_chicken");
 
 
-
-
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FLOUR_BAG)
                 .pattern("FFF")
                 .pattern("FFF")
@@ -137,6 +135,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         oreSmelting(recipeOutput, List.of(ModBlocks.PINK_SALT_DEPOSIT), RecipeCategory.MISC, ModItems.PINK_SALT, 0.25f, 200, "salt");
         oreSmelting(recipeOutput, List.of(ModItems.FLOUR), RecipeCategory.MISC, Items.BREAD, 0.25f, 200, "flour");
+
+        applewoodRecipes(recipeOutput);
     }
 
     protected static void oreSmelting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,
@@ -173,6 +173,37 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(output, ResourceLocation.fromNamespaceAndPath(
                         EweeFoods.MOD_ID, recipeName + "_campfire"
                 ));
+    }
+
+    protected void applewoodRecipes(RecipeOutput recipeOutput){
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.APPLE_PLANKS.get(), 4)
+                .requires(ModBlocks.APPLE_WOOD,1)
+                .unlockedBy("has_apple_wood_block", has(ModBlocks.APPLE_WOOD)).save(recipeOutput, "eweefoods:apple_wood_planks_from_apple_wood");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.APPLE_PLANKS.get(), 4)
+                .requires(ModBlocks.STRIPPED_APPLE_WOOD,1)
+                .unlockedBy("has_stripped_apple_wood", has(ModBlocks.STRIPPED_APPLE_WOOD)).save(recipeOutput, "eweefoods:apple_wood_planks_from_stripped_apple_wood");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.APPLE_PLANKS.get(), 4)
+                .requires(ModBlocks.APPLE_LOG,1)
+                .unlockedBy("has_apple_log_block", has(ModBlocks.APPLE_LOG)).save(recipeOutput, "eweefoods:apple_wood_planks_from_apple_log");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.APPLE_PLANKS.get(), 4)
+                .requires(ModBlocks.STRIPPED_APPLE_LOG,1)
+                .unlockedBy("has_stripped_apple_log", has(ModBlocks.STRIPPED_APPLE_LOG)).save(recipeOutput, "eweefoods:apple_wood_planks_from_stripped_apple_log");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.APPLE_WOOD.get(), 3)
+                .pattern("LL")
+                .pattern("LL")
+                .define('L', ModBlocks.APPLE_LOG)
+                .unlockedBy("has_apple_log", has(ModBlocks.APPLE_LOG)).save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.STRIPPED_APPLE_WOOD.get(), 3)
+                .pattern("LL")
+                .pattern("LL")
+                .define('L', ModBlocks.STRIPPED_APPLE_LOG)
+                .unlockedBy("has_stripped_apple_log", has(ModBlocks.STRIPPED_APPLE_LOG)).save(recipeOutput);
+
     }
 }
 

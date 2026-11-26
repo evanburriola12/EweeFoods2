@@ -65,11 +65,13 @@
 
   "block.eweefoods.apple_leaves": "Apple Leaves",
   "block.eweefoods.apple_log": "Apple Log",
+  "block.eweefoods.apple_wood": "Apple Wood",
+  "block.eweefoods.stripped_apple_wood": "Stripped Apple Wood",
   "block.eweefoods.apple_planks": "Apple Planks",
   "block.eweefoods.stripped_apple_log": "Stripped Apple Log",
   "block.eweefoods.apple_sapling": "Apple Tree Sapling",
 
-
+  "block.eweefoods.drying_rack": "Drying Rack",
 
   "creativetab.eweefoods": "EweeFoods"
 }

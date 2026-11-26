@@ -1,4 +1,4 @@
-package net.ewee.eweefoods.client.renderer;
+package net.ewee.eweefoods.block.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -15,9 +15,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import java.util.Random;
 
-public class AppleLeavesRenderer implements BlockEntityRenderer<AppleLeavesBlockEntity> {
+public class AppleLeavesBlockEntityRenderer implements BlockEntityRenderer<AppleLeavesBlockEntity> {
 
-    public AppleLeavesRenderer(
+    public AppleLeavesBlockEntityRenderer(
             BlockEntityRendererProvider.Context context) {
 
     }

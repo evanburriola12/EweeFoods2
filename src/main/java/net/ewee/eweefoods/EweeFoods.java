@@ -2,11 +2,14 @@ package net.ewee.eweefoods;
 
 import net.ewee.eweefoods.block.entity.ModBlockEntities;
 import net.ewee.eweefoods.block.ModBlocks;
-import net.ewee.eweefoods.client.ClientModEvents;
 import net.ewee.eweefoods.item.ModCreativeModeTabs;
 import net.ewee.eweefoods.item.ModItems;
 import net.neoforged.api.distmarker.Dist;
-import net.neoforged.fml.loading.FMLEnvironment;
+import net.ewee.eweefoods.block.entity.renderer.AppleLeavesBlockEntityRenderer;
+import net.ewee.eweefoods.block.entity.renderer.DryingRackBlockEntityRenderer;
+import net.ewee.eweefoods.recipe.ModRecipes;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -42,7 +45,9 @@ public class EweeFoods {
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+
+        ModRecipes.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -50,10 +55,6 @@ public class EweeFoods {
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
-
-        if (FMLEnvironment.dist == Dist.CLIENT) {
-            ClientModEvents.register(modEventBus);
-        }
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
@@ -77,4 +78,17 @@ public class EweeFoods {
     public void onServerStarting(ServerStartingEvent event) {
 
     }
+
+    @EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
+    public static class ClientModEvents{
+
+        @SubscribeEvent
+        public static void registerBER(EntityRenderersEvent.RegisterRenderers event){
+            event.registerBlockEntityRenderer(ModBlockEntities.DRYING_RACK_BE.get(), DryingRackBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(ModBlockEntities.APPLE_LEAVES.get(), AppleLeavesBlockEntityRenderer::new);
+        }
+
+    }
+
+
 }

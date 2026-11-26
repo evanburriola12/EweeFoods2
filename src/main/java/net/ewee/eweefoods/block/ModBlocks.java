@@ -88,7 +88,6 @@ public class ModBlocks {
     public static final DeferredBlock<Block> APPLE_PLANKS = registerBlock("apple_planks",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)) {
 
-                //Do I need this? I think kaupenjoe had this added for some reason. PLanks are different for some reason
                 @Override
                 public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
                     return true;
@@ -105,10 +104,10 @@ public class ModBlocks {
                 }
             });
 
-
-
-
-
+    public static final DeferredBlock<Block> DRYING_RACK = registerBlock("drying_rack",
+            () -> new DryingRackBlock(BlockBehaviour.Properties.of()
+                    .noOcclusion()
+                    .strength(2f)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block){
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

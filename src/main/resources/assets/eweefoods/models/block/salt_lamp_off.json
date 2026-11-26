@@ -4,7 +4,7 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "eweefoods:block/salt_lamp_off",
-		"particle": "eweefoods:block/salt_lamp_off"
+		"particle": "eweefoods:block/pink_salt_block"
 	},
 	"elements": [
 		{

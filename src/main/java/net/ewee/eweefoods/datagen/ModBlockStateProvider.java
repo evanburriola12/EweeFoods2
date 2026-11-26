@@ -1,6 +1,5 @@
 package net.ewee.eweefoods.datagen;
 
-import net.ewee.eweefoods.Config;
 import net.ewee.eweefoods.EweeFoods;
 import net.ewee.eweefoods.block.ModBlocks;
 import net.ewee.eweefoods.block.custom.OnionCropBlock;
@@ -15,9 +14,9 @@ import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 
@@ -37,6 +36,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.SEA_SALT_BlOCK);
         blockWithItem(ModBlocks.SALT_BlOCK);
 
+        customLamp();
+        dryingRack();
 
         makeCrop(((CropBlock) ModBlocks.RICE_CROP.get()), RiceCropBlock.AGE, "rice_crop_stage","rice_crop_stage");
         makeCrop(((CropBlock) ModBlocks.ONION_CROP.get()), OnionCropBlock.AGE, "onion_crop_stage","onion_crop_stage");
@@ -44,26 +45,19 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         //Apple Tree Stuff
         logBlock(((RotatedPillarBlock) ModBlocks.APPLE_LOG.get()));
-        logBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_APPLE_LOG.get()));
-
         axisBlock(((RotatedPillarBlock) ModBlocks.APPLE_WOOD.get()), blockTexture(ModBlocks.APPLE_LOG.get()), blockTexture(ModBlocks.APPLE_LOG.get()));
+        logBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_APPLE_LOG.get()));
         axisBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_APPLE_WOOD.get()), blockTexture(ModBlocks.STRIPPED_APPLE_LOG.get()), blockTexture(ModBlocks.STRIPPED_APPLE_LOG.get()));
 
-        //Why is this like this? Kaupenjoe?
-        simpleBlockItem(ModBlocks.APPLE_LOG.get(),
-                models().getExistingFile(modLoc("block/apple_log")));
-        simpleBlockItem(ModBlocks.STRIPPED_APPLE_LOG.get(),
-                models().getExistingFile(modLoc("block/stripped_apple_log")));
-        simpleBlockItem(ModBlocks.APPLE_WOOD.get(),
-                models().getExistingFile(modLoc("block/apple_wood")));
-        simpleBlockItem(ModBlocks.STRIPPED_APPLE_WOOD.get(),
-                models().getExistingFile(modLoc("block/stripped_apple_wood")));
+        blockItem(ModBlocks.APPLE_LOG);
+        blockItem(ModBlocks.APPLE_WOOD);
+        blockItem(ModBlocks.STRIPPED_APPLE_LOG);
+        blockItem(ModBlocks.STRIPPED_APPLE_WOOD);
 
         blockWithItem(ModBlocks.APPLE_LEAVES);
         blockWithItem(ModBlocks.APPLE_PLANKS);
+
         saplingBlock(ModBlocks.APPLE_SAPLING);
-
-
     }
 
     private void saplingBlock(DeferredBlock<Block> blockRegistryObject) {
@@ -115,5 +109,25 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(ModBlocks.SALT_LAMP.get(), models().singleTexture("salt_lamp",
                 ResourceLocation.fromNamespaceAndPath(EweeFoods.MOD_ID, "block/salt_lamp_on"),
                 ResourceLocation.fromNamespaceAndPath(EweeFoods.MOD_ID, "block/salt_lamp_on")));
+    }
+
+    private void blockItem(DeferredBlock<?> deferredBlock) {
+        simpleBlockItem(deferredBlock.get(), new ModelFile.UncheckedModelFile("eweefoods:block/" + deferredBlock.getId().getPath()));
+    }
+
+    private void blockItem(DeferredBlock<?> deferredBlock, String appendix) {
+        simpleBlockItem(deferredBlock.get(), new ModelFile.UncheckedModelFile("eweefoods:block/" + deferredBlock.getId().getPath() + appendix));
+    }
+
+    private void dryingRack(){
+        getVariantBuilder(ModBlocks.DRYING_RACK.get()).forAllStates(blockState ->{
+            return new ConfiguredModel[]{new ConfiguredModel(models().singleTexture("drying_rack_gen",
+                    ResourceLocation.fromNamespaceAndPath(EweeFoods.MOD_ID, "block/drying_rack"),
+                    ResourceLocation.fromNamespaceAndPath(EweeFoods.MOD_ID, "block/drying_rack")))};
+        });
+
+        simpleBlockItem(ModBlocks.DRYING_RACK.get(), models().singleTexture("drying_rack_gen",
+                ResourceLocation.fromNamespaceAndPath(EweeFoods.MOD_ID, "block/drying_rack"),
+                ResourceLocation.fromNamespaceAndPath(EweeFoods.MOD_ID, "block/drying_rack")));
     }
 }
