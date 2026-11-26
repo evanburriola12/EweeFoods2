@@ -1,9 +1,12 @@
 package net.ewee.eweefoods.worldgen;
 
 import net.ewee.eweefoods.EweeFoods;
+import net.ewee.eweefoods.block.ModBlocks;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -19,7 +22,7 @@ import java.util.List;
 public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> PINK_SALT_DEPOSIT_PLACED_KEY = registerKey("pink_salt_deposit_placed");
     public static final ResourceKey<PlacedFeature> SEA_SALT_DEPOSIT_PLACED_KEY = registerKey("sea_salt_deposit_placed");
-
+    public static final ResourceKey<PlacedFeature> APPLE_TREE_PLACED_KEY = registerKey("apple_tree_placed");
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
@@ -28,6 +31,10 @@ public class ModPlacedFeatures {
 
         register(context, SEA_SALT_DEPOSIT_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_SEA_SALT_DEPOSIT_KEY),
                 ModOrePlacement.commonOrePlacement(16, HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(112))));
+
+        register(context, APPLE_TREE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.APPLEWOOD_KEY),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.1f, 1),
+                        ModBlocks.APPLE_SAPLING.get()));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {

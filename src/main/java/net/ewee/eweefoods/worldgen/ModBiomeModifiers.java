@@ -17,6 +17,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_PINK_SALT_DEPOSIT = registerKey("add_pink_salt_deposit");
     public static final ResourceKey<BiomeModifier> ADD_SEA_SALT_DEPOSIT = registerKey("add_sea_salt_deposit");
+    public static final ResourceKey<BiomeModifier> ADD_APPLE_TREE = registerKey("add_apple_tree");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -36,6 +37,11 @@ public class ModBiomeModifiers {
                 biomes.getOrThrow(BiomeTags.IS_OCEAN),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.SEA_SALT_DEPOSIT_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
+
+        context.register(ADD_APPLE_TREE, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.FOREST)),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.APPLE_TREE_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {

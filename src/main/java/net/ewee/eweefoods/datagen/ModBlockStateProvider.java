@@ -61,6 +61,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(ModBlocks.STRIPPED_APPLE_WOOD.get(),
                 models().getExistingFile(modLoc("block/stripped_apple_wood")));
 
+        blockWithItem(ModBlocks.APPLE_LEAVES);
+
         blockWithItem(ModBlocks.APPLE_PLANKS);
 
         saplingBlock(ModBlocks.APPLE_SAPLING);
