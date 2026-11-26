@@ -85,7 +85,6 @@ public class DryingRackBlockEntity extends BlockEntity {
     }
 
     private Optional<RecipeHolder<DryingRackRecipe>> getCurrentRecipe(){
-        EweeFoods.LOGGER.debug("Inv: {}", inventory.getStackInSlot(0));
         return this.level.getRecipeManager()
                 .getRecipeFor(ModRecipes.DRYING_RACK_TYPE.get(), new DryingRackRecipeInput(inventory.getStackInSlot(0)), level);
     }
@@ -158,8 +157,6 @@ public class DryingRackBlockEntity extends BlockEntity {
         } else {
             resetProgress();
         }
-
-        EweeFoods.LOGGER.debug("TICK: {}", progress );
     }
 
     private void resetProgress() {
@@ -186,15 +183,7 @@ public class DryingRackBlockEntity extends BlockEntity {
 
     private boolean hasRecipe(){
         Optional<RecipeHolder<DryingRackRecipe>> recipe = getCurrentRecipe();
-        if(recipe.isEmpty()){
-            return false;
-        }
-
-        ItemStack output = recipe.get().value().output();
-        EweeFoods.LOGGER.debug("Output {}", output.getDisplayName().getString());
-        boolean res = canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output);
-        EweeFoods.LOGGER.debug("RES {}", res);
-        return true;
+        return recipe.isPresent();
     }
 
     @Override
