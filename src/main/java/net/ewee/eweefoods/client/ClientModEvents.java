@@ -1,6 +1,6 @@
 package net.ewee.eweefoods.client;
 
-import net.ewee.eweefoods.block.ModBlockEntities;
+import net.ewee.eweefoods.block.entity.ModBlockEntities;
 import net.ewee.eweefoods.client.renderer.AppleLeavesRenderer;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;

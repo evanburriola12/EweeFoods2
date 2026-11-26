@@ -1,7 +1,7 @@
-package net.ewee.eweefoods.block;
+package net.ewee.eweefoods.block.entity;
 
 import net.ewee.eweefoods.EweeFoods;
-import net.ewee.eweefoods.block.custom.entity.AppleLeavesBlockEntity;
+import net.ewee.eweefoods.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredRegister;

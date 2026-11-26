@@ -1,6 +1,6 @@
 package net.ewee.eweefoods;
 
-import net.ewee.eweefoods.block.ModBlockEntities;
+import net.ewee.eweefoods.block.entity.ModBlockEntities;
 import net.ewee.eweefoods.block.ModBlocks;
 import net.ewee.eweefoods.client.ClientModEvents;
 import net.ewee.eweefoods.item.ModCreativeModeTabs;

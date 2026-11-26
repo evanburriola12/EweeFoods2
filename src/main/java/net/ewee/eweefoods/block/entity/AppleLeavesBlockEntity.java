@@ -1,6 +1,5 @@
-package net.ewee.eweefoods.block.custom.entity;
+package net.ewee.eweefoods.block.entity;
 
-import net.ewee.eweefoods.block.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;

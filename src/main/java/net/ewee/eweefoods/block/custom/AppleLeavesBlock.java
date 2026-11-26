@@ -1,6 +1,6 @@
 package net.ewee.eweefoods.block.custom;
 
-import net.ewee.eweefoods.block.custom.entity.AppleLeavesBlockEntity;
+import net.ewee.eweefoods.block.entity.AppleLeavesBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
