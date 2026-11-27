@@ -45,7 +45,7 @@ public class AppleLeavesBlockEntity extends BlockEntity {
             return;
         }
 
-        if (level.random.nextInt(5) != 0) {
+        if (level.random.nextInt(100) != 0) {
             return;
         }
 
