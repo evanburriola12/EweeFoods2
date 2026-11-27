@@ -2,7 +2,7 @@ package net.ewee.eweefoods.block.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.ewee.eweefoods.EweeFoods;
+import net.ewee.eweefoods.block.custom.DryingRackBlock;
 import net.ewee.eweefoods.block.entity.DryingRackBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -30,6 +31,20 @@ public class DryingRackBlockEntityRenderer implements BlockEntityRenderer<Drying
                        MultiBufferSource multiBufferSource, int packedLight, int packedOverlay) {
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 
+        poseStack.pushPose();
+    // 1. Move pivot to block center and rotate the entire coordinate system
+        Direction facing = dryingRackBlockEntity.getBlockState().getValue(DryingRackBlock.FACING);
+        poseStack.translate(0.5, 0.0, 0.5);
+        float yRot = switch (facing) {
+            case SOUTH -> 0f;
+            case WEST -> 270f;
+            case NORTH -> 180f;
+            case EAST -> 90f;
+            default -> 0f;
+        };
+        poseStack.mulPose(Axis.YP.rotationDegrees(yRot));
+        poseStack.translate(-0.5, 0.0, -0.5);
+
         for(int i = 0; i < dryingRackBlockEntity.inventory.getSlots(); i++) {
             ItemStack stack = dryingRackBlockEntity.inventory.getStackInSlot(i);
             if(stack.isEmpty()){
@@ -37,14 +52,14 @@ public class DryingRackBlockEntityRenderer implements BlockEntityRenderer<Drying
             }
 
             poseStack.pushPose();
-            poseStack.translate(0.5f + (0.5f * i), 1.5f, 0.5f);
+            poseStack.translate(0.5f - (0.5f * i), 1.5f, 0.5f);
             poseStack.scale(0.5f, 0.5f, 0.5f);
-            poseStack.mulPose(Axis.YP.rotationDegrees(dryingRackBlockEntity.getRenderingRotation()));
 
             itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, getLightLevel(dryingRackBlockEntity.getLevel(),
                     dryingRackBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, poseStack, multiBufferSource, dryingRackBlockEntity.getLevel(), 1);
             poseStack.popPose();
         }
+        poseStack.popPose();
     }
 
     private int getLightLevel(Level level, BlockPos pos){

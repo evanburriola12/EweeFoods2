@@ -24,7 +24,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
 public class DryingRackBlockEntity extends BlockEntity {
-    public final ItemStackHandler inventory = new ItemStackHandler(3){
+    private final int SLOTS = 3;
+
+    public final ItemStackHandler inventory = new ItemStackHandler(SLOTS){
         @Override
         protected int getStackLimit(int slot, ItemStack stack) {
             return 1;
@@ -41,8 +43,8 @@ public class DryingRackBlockEntity extends BlockEntity {
 
     private float rotation;
     protected final ContainerData data;
-    private int progress = 0;
-    private int maxProgress = 72;
+    private int[] progress = new int[SLOTS];
+    private int[] maxProgress = new int[]{72,72,72};
 
     
     public DryingRackBlockEntity(BlockPos pos, BlockState blockState) {
@@ -51,8 +53,12 @@ public class DryingRackBlockEntity extends BlockEntity {
             @Override
             public int get(int i) {
                 return switch (i) {
-                    case 0 -> DryingRackBlockEntity.this.progress;
-                    case 1 -> DryingRackBlockEntity.this.maxProgress;
+                    case 0 -> DryingRackBlockEntity.this.progress[0];
+                    case 1 -> DryingRackBlockEntity.this.maxProgress[0];
+                    case 2 -> DryingRackBlockEntity.this.progress[1];
+                    case 3 -> DryingRackBlockEntity.this.maxProgress[1];
+                    case 4 -> DryingRackBlockEntity.this.progress[2];
+                    case 5 -> DryingRackBlockEntity.this.maxProgress[2];
                     default -> 0;
                 };
             }
@@ -60,33 +66,25 @@ public class DryingRackBlockEntity extends BlockEntity {
             @Override
             public void set(int i, int value) {
                 switch (i) {
-                    case 0: DryingRackBlockEntity.this.progress = value;
-                    case 1: DryingRackBlockEntity.this.maxProgress = value;
+                    case 0: DryingRackBlockEntity.this.progress[0] = value;
+                    case 1: DryingRackBlockEntity.this.maxProgress[0] = value;
+                    case 2: DryingRackBlockEntity.this.progress[1] = value;
+                    case 3: DryingRackBlockEntity.this.maxProgress[1] = value;
+                    case 4: DryingRackBlockEntity.this.progress[2] = value;
+                    case 5: DryingRackBlockEntity.this.maxProgress[2] = value;
                 }
             }
 
             @Override
             public int getCount() {
-                return 3;
+                return 6;
             }
         };
     }
 
-    private boolean canInsertItemIntoOutputSlot(ItemStack output) {
-        return inventory.getStackInSlot(0).isEmpty() ||
-                inventory.getStackInSlot(0).getItem() == output.getItem();
-    }
-
-    private boolean canInsertAmountIntoOutputSlot(int count) {
-        int maxCount = inventory.getStackInSlot(0).isEmpty() ? 64 : inventory.getStackInSlot(0).getMaxStackSize();
-        int currentCount = inventory.getStackInSlot(0).getCount();
-
-        return maxCount >= currentCount + count;
-    }
-
-    private Optional<RecipeHolder<DryingRackRecipe>> getCurrentRecipe(){
+    private Optional<RecipeHolder<DryingRackRecipe>> getCurrentRecipe(int slotIndex){
         return this.level.getRecipeManager()
-                .getRecipeFor(ModRecipes.DRYING_RACK_TYPE.get(), new DryingRackRecipeInput(inventory.getStackInSlot(0)), level);
+                .getRecipeFor(ModRecipes.DRYING_RACK_TYPE.get(), new DryingRackRecipeInput(inventory.getStackInSlot(slotIndex)), level);
     }
 
     public float getRenderingRotation(){
@@ -132,8 +130,8 @@ public class DryingRackBlockEntity extends BlockEntity {
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
-        tag.putInt("drying_rack.progress", progress);
-        tag.putInt("drying_rack.max_progress", maxProgress);
+        tag.putIntArray("drying_rack.progress", progress);
+        tag.putIntArray("drying_rack.max_progress", maxProgress);
         tag.put("inventory", inventory.serializeNBT(registries));
     }
 
@@ -141,48 +139,55 @@ public class DryingRackBlockEntity extends BlockEntity {
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
         inventory.deserializeNBT(registries, tag.getCompound("inventory"));
-        progress = tag.getInt("drying_rack.progress");
-        maxProgress = tag.getInt("drying_rack.max_progress");
+        progress = tag.getIntArray("drying_rack.progress");
+        maxProgress = tag.getIntArray("drying_rack.max_progress");
     }
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
-        if(hasRecipe()) {
-            increaseCraftingProgress();
-            setChanged(level, blockPos, blockState);
+        for (int i = 0; i < inventory.getSlots(); i++) {
+            if (hasRecipe(i)) {
+                increaseCraftingProgress(i);
+                setChanged(level, blockPos, blockState);
 
-            if(hasCraftingFinished()) {
-                craftItem();
-                resetProgress();
+                if (hasCraftingFinished(i)) {
+                    craftItem(i);
+                    resetProgress(i);
+                }
+            } else {
+                resetProgress(i);
             }
-        } else {
-            resetProgress();
         }
     }
 
     private void resetProgress() {
-        progress = 0;
-        maxProgress = 72;
+        progress = new int[]{0,0,0};
+        maxProgress = new int[]{72,72,72};
     }
 
-    private boolean hasCraftingFinished() {
-        return this.progress >= this.maxProgress;
+    private void resetProgress(int slotIndex) {
+        progress[slotIndex] = 0;
+        maxProgress[slotIndex] = 72;
     }
 
-    private void increaseCraftingProgress() {
-        progress++;
+    private boolean hasCraftingFinished(int slotIndex) {
+        return this.progress[slotIndex] >= this.maxProgress[slotIndex];
     }
 
-    private void craftItem() {
-        Optional<RecipeHolder<DryingRackRecipe>> recipe = getCurrentRecipe();
+    private void increaseCraftingProgress(int slotIndex) {
+        progress[slotIndex]++;
+    }
+
+    private void craftItem(int slotIndex) {
+        Optional<RecipeHolder<DryingRackRecipe>> recipe = getCurrentRecipe(slotIndex);
         ItemStack output = recipe.get().value().output();
 
-        inventory.extractItem(0, 1, false);
-        inventory.setStackInSlot(0, new ItemStack(output.getItem(),
-                inventory.getStackInSlot(0).getCount() + output.getCount()));
+        inventory.extractItem(slotIndex, 1, false);
+        inventory.setStackInSlot(slotIndex, new ItemStack(output.getItem(),
+                inventory.getStackInSlot(slotIndex).getCount() + output.getCount()));
     }
 
-    private boolean hasRecipe(){
-        Optional<RecipeHolder<DryingRackRecipe>> recipe = getCurrentRecipe();
+    private boolean hasRecipe(int slotIndex){
+        Optional<RecipeHolder<DryingRackRecipe>> recipe = getCurrentRecipe(slotIndex);
         return recipe.isPresent();
     }
 

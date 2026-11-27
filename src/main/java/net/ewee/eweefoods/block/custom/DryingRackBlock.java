@@ -4,6 +4,9 @@ import com.mojang.serialization.MapCodec;
 import net.ewee.eweefoods.EweeFoods;
 import net.ewee.eweefoods.block.entity.DryingRackBlockEntity;
 import net.ewee.eweefoods.block.entity.ModBlockEntities;
+import net.ewee.eweefoods.recipe.DryingRackRecipe;
+import net.ewee.eweefoods.recipe.DryingRackRecipeInput;
+import net.ewee.eweefoods.recipe.ModRecipes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -16,6 +19,7 @@ import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -31,6 +35,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.antlr.v4.runtime.tree.xpath.XPathLexerErrorListener;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class DryingRackBlock extends BaseEntityBlock{
     public static final VoxelShape SHAPE = Block.box(0,0,0,16,16,16);
@@ -94,16 +100,17 @@ public class DryingRackBlock extends BaseEntityBlock{
         if (!level.isClientSide()) {
                 if(level.getBlockEntity(pos) instanceof  DryingRackBlockEntity dryingRackBlockEntity){
                     int emptySlotIndex = dryingRackBlockEntity.openItemStackIndex();
-                    if(emptySlotIndex != -1 && !stack.isEmpty()){
-                        dryingRackBlockEntity.inventory.insertItem(emptySlotIndex, stack.copy(), false);
-                        stack.shrink(1);
-                        soundEvent = true;
-                    } else if(stack.isEmpty()){
+                    if(stack.isEmpty()){
                         ItemStack stackOnDryingRack = dryingRackBlockEntity.extractItemStack();
                         if(stackOnDryingRack != ItemStack.EMPTY) {
                             player.addItem(stackOnDryingRack);
                             soundEvent = true;
                         }
+                    }
+                    else if(emptySlotIndex != -1 && isValidDryingRackItem(level,stack)){
+                        dryingRackBlockEntity.inventory.insertItem(emptySlotIndex, stack.copy(), false);
+                        stack.shrink(1);
+                        soundEvent = true;
                     }
 
                     // DEBUG
@@ -143,4 +150,10 @@ public class DryingRackBlock extends BaseEntityBlock{
         return createTickerHelper(blockEntityType, ModBlockEntities.DRYING_RACK_BE.get(),
                 (level1, blockPos, blockState, blockEntity) -> blockEntity.tick(level1, blockPos, blockState));
     }
+
+
+    private boolean isValidDryingRackItem(Level level, ItemStack itemStack){
+        return level.getRecipeManager().getRecipeFor(ModRecipes.DRYING_RACK_TYPE.get(), new DryingRackRecipeInput(itemStack), level).isPresent();
+    }
+
 }
