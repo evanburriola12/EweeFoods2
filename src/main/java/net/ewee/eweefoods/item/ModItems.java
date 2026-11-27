@@ -4,12 +4,18 @@ import net.ewee.eweefoods.EweeFoods;
 import net.ewee.eweefoods.block.ModBlocks;
 import net.ewee.eweefoods.block.custom.OnionCropBlock;
 import net.ewee.eweefoods.item.custom.RevealItem;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.List;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(EweeFoods.MOD_ID);
@@ -39,7 +45,17 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(ModFoodProperties.FRESH_LOAF)));
 
     public static final DeferredItem<Item> GLAZED_RABBIT = ITEMS.register("glazed_rabbit",
-            () -> new Item(new Item.Properties().food(ModFoodProperties.GLAZED_RABBIT)));
+            () -> new Item(new Item.Properties().food(ModFoodProperties.GLAZED_RABBIT)) {
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    if (Screen.hasShiftDown()) {
+                        tooltipComponents.add(Component.translatable("tooltip.eweefoods.glazed_rabbit.shift_down"));
+                        } else {
+                        tooltipComponents.add(Component.translatable("Shift for §e§oSTATS§r§r"));
+                        }
+                        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
 
     public static final DeferredItem<Item> ROAST = ITEMS.register("roast",
             () -> new Item(new Item.Properties().food(ModFoodProperties.ROAST)));

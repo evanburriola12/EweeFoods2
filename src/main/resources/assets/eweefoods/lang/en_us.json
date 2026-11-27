@@ -4,7 +4,11 @@
   "item.eweefoods.cured_meat": "Cured Meat",
   "item.eweefoods.chicken_fried_steak": "Chicken Fried Steak",
   "item.eweefoods.fresh_loaf": "Fresh Loaf",
+
   "item.eweefoods.glazed_rabbit": "Glazed Rabbit",
+  "tooltip.eweefoods.glazed_rabbit.shift_down": "Hunger: §e10§r\nHealth: §e10§r\n§kSanity§r: §e10§r\n§b§oJumpboost:§r§r §e40s§r\n§b§oSpeed:§r§r §e40s§r",
+
+
   "item.eweefoods.roast": "Roast",
   "item.eweefoods.nutritious_soup": "Nutritious Soup",
   "item.eweefoods.roast_beef": "Roast Beef",
