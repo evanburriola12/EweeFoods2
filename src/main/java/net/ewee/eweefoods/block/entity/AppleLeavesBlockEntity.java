@@ -10,6 +10,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -40,6 +41,12 @@ public class AppleLeavesBlockEntity extends BlockEntity {
     }
 
     public void randomTick(ServerLevel level) {
+
+        BlockState state = level.getBlockState(worldPosition);
+
+        if (state.getValue(LeavesBlock.DISTANCE) > 6) {
+            return;
+        }
 
         if (appleCount >= 4) {
             return;
