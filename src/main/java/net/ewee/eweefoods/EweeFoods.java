@@ -4,12 +4,21 @@ import net.ewee.eweefoods.block.entity.ModBlockEntities;
 import net.ewee.eweefoods.block.ModBlocks;
 import net.ewee.eweefoods.item.ModCreativeModeTabs;
 import net.ewee.eweefoods.item.ModItems;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffectUtil;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.ewee.eweefoods.block.entity.renderer.AppleLeavesBlockEntityRenderer;
 import net.ewee.eweefoods.block.entity.renderer.DryingRackBlockEntityRenderer;
 import net.ewee.eweefoods.recipe.ModRecipes;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -22,6 +31,8 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+
+import java.util.List;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(EweeFoods.MOD_ID)
@@ -88,7 +99,53 @@ public class EweeFoods {
             event.registerBlockEntityRenderer(ModBlockEntities.APPLE_LEAVES.get(), AppleLeavesBlockEntityRenderer::new);
         }
 
+
+        @SubscribeEvent
+        public static void onItemTooltip(ItemTooltipEvent event) {
+            ItemStack stack = event.getItemStack();
+            FoodProperties food = stack.get(DataComponents.FOOD);
+
+            if (food != null) {
+                List<Component> tooltip = event.getToolTip();
+                tooltip.add(Component.literal("Hunger: " + food.nutrition() + " | Saturation: " + String.format("%.1f", food.saturation()))
+                        .withStyle(ChatFormatting.GRAY));
+
+                float tickRate = event.getContext().tickRate();
+                if (tickRate <= 0.0F) {
+                    tickRate = 20.0F;
+                }
+
+                for (FoodProperties.PossibleEffect possibleEffect : food.effects()) {
+                    MobEffectInstance effectInstance = possibleEffect.effect();
+                    float probability = possibleEffect.probability();
+
+                    MutableComponent line = Component.translatable(effectInstance.getDescriptionId());
+
+                    if (effectInstance.getAmplifier() > 0) {
+                        line = Component.translatable(
+                                "potion.withAmplifier",
+                                line,
+                                Component.translatable("potion.potency." + effectInstance.getAmplifier())
+                        );
+                    }
+
+                    if (!effectInstance.endsWithin(20)) {
+                        line = Component.translatable(
+                                "potion.withDuration",
+                                line,
+                                MobEffectUtil.formatDuration(effectInstance, 1.0F, tickRate)
+                        );
+                    }
+
+                    if (probability < 1.0F) {
+                        int chance = Math.round(probability * 100.0F);
+                        line.append(Component.literal(" (" + chance + "%)"));
+                    }
+
+                    ChatFormatting color = effectInstance.getEffect().value().getCategory().getTooltipFormatting();
+                    tooltip.add(line.withStyle(color));
+                }
+            }
+        }
     }
-
-
 }

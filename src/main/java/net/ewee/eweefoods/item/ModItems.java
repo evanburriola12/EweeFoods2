@@ -2,14 +2,14 @@ package net.ewee.eweefoods.item;
 
 import net.ewee.eweefoods.EweeFoods;
 import net.ewee.eweefoods.block.ModBlocks;
-import net.ewee.eweefoods.block.custom.OnionCropBlock;
 import net.ewee.eweefoods.item.custom.RevealItem;
-import net.minecraft.world.food.FoodProperties;
+import net.ewee.eweefoods.item.custom.TooltipItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(EweeFoods.MOD_ID);
@@ -39,7 +39,7 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(ModFoodProperties.FRESH_LOAF)));
 
     public static final DeferredItem<Item> GLAZED_RABBIT = ITEMS.register("glazed_rabbit",
-            () -> new Item(new Item.Properties().food(ModFoodProperties.GLAZED_RABBIT)));
+            () -> new TooltipItem(new Item.Properties().food(ModFoodProperties.GLAZED_RABBIT), "glazed_rabbit"));
 
     public static final DeferredItem<Item> ROAST = ITEMS.register("roast",
             () -> new Item(new Item.Properties().food(ModFoodProperties.ROAST)));
