@@ -22,6 +22,10 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("apple_leaves", () -> BlockEntityType.Builder.of(
                 AppleLeavesBlockEntity::new, ModBlocks.APPLE_LEAVES.get()).build(null));
 
+    public static final Supplier<BlockEntityType<CrockpotBlockEntity>> CROCKPOT =
+            BLOCK_ENTITIES.register("crockpot", () -> BlockEntityType.Builder.of(
+                   CrockpotBlockEntity::new, ModBlocks.CROCKPOT.get()).build(null));
+
     public static void register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);
     }

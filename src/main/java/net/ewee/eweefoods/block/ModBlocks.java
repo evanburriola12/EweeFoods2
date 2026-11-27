@@ -109,6 +109,11 @@ public class ModBlocks {
                     .noOcclusion()
                     .strength(2f)));
 
+    public static final DeferredBlock<Block> CROCKPOT = registerBlock("crockpot",
+            () -> new CrockpotBlock(BlockBehaviour.Properties.of()
+                    .noOcclusion()
+                    .strength(2f)));
+
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block){
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

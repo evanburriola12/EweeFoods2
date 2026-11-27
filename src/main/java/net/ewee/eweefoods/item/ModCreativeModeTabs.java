@@ -90,6 +90,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.APPLE_LEAVES);
 
                         output.accept(ModBlocks.DRYING_RACK);
+                        output.accept(ModBlocks.CROCKPOT);
 
 
                     })).build());
